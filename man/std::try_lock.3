@@ -1,4 +1,4 @@
-.TH std::try_lock 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::try_lock 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::try_lock \- std::try_lock
 
@@ -20,7 +20,7 @@ std::try_lock \- std::try_lock
 
 .SH Parameters
 
-   lock1, lock2, ... , lockn - the Lockable objects to lock
+   lock1, lock2, ..., lockn - the Lockable objects to lock
 
 .SH Return value
 
@@ -31,16 +31,16 @@ std::try_lock \- std::try_lock
    The following example uses std::try_lock to periodically tally and reset counters
    running in separate threads.
 
-
+   
 // Run this code
 
- #include <mutex>
- #include <vector>
- #include <thread>
- #include <iostream>
- #include <functional>
  #include <chrono>
-
+ #include <functional>
+ #include <iostream>
+ #include <mutex>
+ #include <thread>
+ #include <vector>
+  
  int main()
  {
      int foo_count = 0;
@@ -50,9 +50,11 @@ std::try_lock \- std::try_lock
      int overall_count = 0;
      bool done = false;
      std::mutex done_mutex;
-
-     auto increment = [](int &counter, std::mutex &m,  const char *desc) {
-         for (int i = 0; i < 10; ++i) {
+  
+     auto increment = [](int& counter, std::mutex& m, const char* desc)
+     {
+         for (int i = 0; i < 10; ++i)
+         {
              std::unique_lock<std::mutex> lock(m);
              ++counter;
              std::cout << desc << ": " << counter << '\\n';
@@ -60,18 +62,21 @@ std::try_lock \- std::try_lock
              std::this_thread::sleep_for(std::chrono::seconds(1));
          }
      };
-
+  
      std::thread increment_foo(increment, std::ref(foo_count),
          std::ref(foo_count_mutex), "foo");
      std::thread increment_bar(increment, std::ref(bar_count),
          std::ref(bar_count_mutex), "bar");
-
-     std::thread update_overall([&]() {
+  
+     std::thread update_overall([&]()
+     {
          done_mutex.lock();
-         while (!done) {
+         while (!done)
+         {
              done_mutex.unlock();
              int result = std::try_lock(foo_count_mutex, bar_count_mutex);
-             if (result == -1) {
+             if (result == -1)
+             {
                  overall_count += foo_count + bar_count;
                  foo_count = 0;
                  bar_count = 0;
@@ -84,14 +89,14 @@ std::try_lock \- std::try_lock
          }
          done_mutex.unlock();
      });
-
+  
      increment_foo.join();
      increment_bar.join();
      done_mutex.lock();
      done = true;
      done_mutex.unlock();
      update_overall.join();
-
+  
      std::cout << "Done processing\\n"
                << "foo: " << foo_count << '\\n'
                << "bar: " << bar_count << '\\n'
@@ -133,4 +138,4 @@ std::try_lock \- std::try_lock
 .SH See also
 
    lock    locks specified mutexes, blocks if any are unavailable
-   \fI(C++11)\fP \fI(function template)\fP
+   \fI(C++11)\fP \fI(function template)\fP 

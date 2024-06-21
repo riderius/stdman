@@ -1,4 +1,4 @@
-.TH std::set_new_handler 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::set_new_handler 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::set_new_handler \- std::set_new_handler
 
@@ -13,11 +13,11 @@ std::set_new_handler \- std::set_new_handler
    The new-handler function is the function called by allocation functions whenever a
    memory allocation attempt fails. Its intended purpose is one of three things:
 
-   1) make more memory available
-   2) terminate the program (e.g. by calling std::terminate)
+   1) make more memory available,
+   2) terminate the program (e.g. by calling std::terminate),
    3) throw exception of type std::bad_alloc or derived from std::bad_alloc.
 
-   The default implementation throws std::bad_alloc. The user can install his own
+   The default implementation throws std::bad_alloc. The user can install their own
    new-handler, which may offer behavior different than the default one.
 
    If new-handler returns, the allocation function repeats the previously-failed
@@ -42,26 +42,30 @@ std::set_new_handler \- std::set_new_handler
 
 .SH Example
 
-
+   
 // Run this code
 
  #include <iostream>
  #include <new>
-
+  
  void handler()
  {
      std::cout << "Memory allocation failed, terminating\\n";
      std::set_new_handler(nullptr);
  }
-
+  
  int main()
  {
      std::set_new_handler(handler);
-     try {
-         while (true) {
+     try
+     {
+         while (true)
+         {
              new int[1000'000'000ul]();
          }
-     } catch (const std::bad_alloc& e) {
+     }
+     catch (const std::bad_alloc& e)
+     {
          std::cout << e.what() << '\\n';
      }
  }
@@ -74,10 +78,10 @@ std::set_new_handler \- std::set_new_handler
 .SH See also
 
    operator new    allocation functions
-   operator new[]  \fI(function)\fP
+   operator new[]  \fI(function)\fP 
    get_new_handler obtains the current new handler
-   \fI(C++11)\fP         \fI(function)\fP
+   \fI(C++11)\fP         \fI(function)\fP 
    new_handler     function pointer type of the new handler
-                   \fI(typedef)\fP
+                   \fI(typedef)\fP 
    bad_alloc       exception thrown when memory allocation fails
-                   \fI(class)\fP
+                   \fI(class)\fP 

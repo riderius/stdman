@@ -1,4 +1,4 @@
-.TH std::variant::emplace 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::variant::emplace 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::variant::emplace \- std::variant::emplace
 
@@ -29,7 +29,7 @@ std::variant::emplace \- std::variant::emplace
                                                                                 C++17)
    std::variant_alternative_t<I, variant>&              \fB(3)\fP                     (until
                                                                                 C++20)
-   emplace( std::initializer_list<U> il,
+       emplace( std::initializer_list<U> il,
    Args&&... args );
    template <std::size_t I, class U, class...                   \fB(4)\fP
    Args>
@@ -37,39 +37,32 @@ std::variant::emplace \- std::variant::emplace
    constexpr std::variant_alternative_t<I,                                      (since
    variant>&                                                                    C++20)
 
-   emplace( std::initializer_list<U> il,
+       emplace( std::initializer_list<U> il,
    Args&&... args );
 
    Creates a new value in-place, in an existing variant object
 
    1) Equivalent to emplace<I>(std::forward<Args>(args)...), where I is the zero-based
    index of T in Types....
-
      * This overload participates in overload resolution only if
        std::is_constructible_v<T, Args...> is true, and T occurs exactly once in
        Types...
-
    2) Equivalent to emplace<I>(il, std::forward<Args>(args)...), where I is the
    zero-based index of T in Types....
-
      * This overload participates in overload resolution only if
        std::is_constructible_v<T, std::initializer_list<U>&, Args...> is true, and T
        occurs exactly once in Types...
-
    3) First, destroys the currently contained value (if any). Then direct-initializes
    the contained value as if constructing a value of type T_I with the arguments
    std::forward<Args>(args).... If an exception is thrown, *this may become
    valueless_by_exception.
-
      * This overload participates in overload resolution only if
        std::is_constructible_v<T_I, Args...> is true.
      * It is a compile-time error if I is not less than sizeof...(Types).
-
    4) First, destroys the currently contained value (if any). Then direct-initializes
    the contained value as if constructing a value of type T_I with the arguments il,
    std::forward<Args>(args).... If an exception is thrown, *this may become
    valueless_by_exception.
-
      * This overload participates in overload resolution only if
        std::is_constructible_v<T_I, std::initializer_list<U>&, Args...> is true.
      * It is a compile-time error if I is not less than sizeof...(Types).
@@ -89,13 +82,13 @@ std::variant::emplace \- std::variant::emplace
 
 .SH Example
 
-
+   
 // Run this code
 
  #include <iostream>
  #include <string>
  #include <variant>
-
+  
  int main()
  {
      std::variant<std::string> v1;
@@ -103,7 +96,7 @@ std::variant::emplace \- std::variant::emplace
      std::cout << std::get<0>(v1) << '\\n';
      v1.emplace<std::string>("def"); // OK
      std::cout << std::get<0>(v1) << '\\n';
-
+  
      std::variant<std::string, std::string> v2;
      v2.emplace<1>("ghi"); // OK
      std::cout << std::get<1>(v2) << '\\n';
@@ -116,7 +109,7 @@ std::variant::emplace \- std::variant::emplace
  def
  ghi
 
-  Defect reports
+   Defect reports
 
    The following behavior-changing defect reports were applied retroactively to
    previously published C++ standards.
@@ -128,4 +121,4 @@ std::variant::emplace \- std::variant::emplace
 .SH See also
 
    operator= assigns a variant
-             \fI(public member function)\fP
+             \fI(public member function)\fP 

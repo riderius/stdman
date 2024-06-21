@@ -1,9 +1,9 @@
-.TH std::span::data 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::span::data 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::span::data \- std::span::data
 
 .SH Synopsis
-   constexpr pointer data() const noexcept;
+   constexpr pointer data() const noexcept;  \fI(since C++20)\fP
 
    Returns a pointer to the beginning of the sequence.
 
@@ -13,21 +13,20 @@ std::span::data \- std::span::data
 
 .SH Example
 
-
+   
 // Run this code
 
- #include <span>
  #include <iostream>
-
+ #include <span>
+  
  int main()
  {
      constexpr char str[] = "ABCDEF\\n";
-
+  
      const std::span sp{str};
-
-     for (auto n{sp.size()}; n != 2; --n) {
+  
+     for (auto n{sp.size()}; n != 2; --n)
          std::cout << sp.last(n).data();
-     }
  }
 
 .SH Output:
@@ -42,4 +41,4 @@ std::span::data \- std::span::data
 .SH See also
 
    constructor   constructs a span
-                 \fI(public member function)\fP
+                 \fI(public member function)\fP 

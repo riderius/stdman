@@ -1,4 +1,4 @@
-.TH std::filesystem::recursive_directory_iterator::disable_recursion_pending 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::filesystem::recursive_directory_iterator::disable_recursion_pending 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::filesystem::recursive_directory_iterator::disable_recursion_pending \- std::filesystem::recursive_directory_iterator::disable_recursion_pending
 
@@ -32,16 +32,16 @@ std::filesystem::recursive_directory_iterator::disable_recursion_pending \- std:
 
 .SH Example
 
-
+   
 // Run this code
 
  #include <cstdlib>
+ #include <filesystem>
  #include <fstream>
  #include <iostream>
  #include <string>
- #include <filesystem>
  namespace fs = std::filesystem;
-
+  
  int main()
  {
      fs::current_path(fs::temp_directory_path());
@@ -50,16 +50,17 @@ std::filesystem::recursive_directory_iterator::disable_recursion_pending \- std:
      std::ofstream("sandbox/a/b/file1.txt");
      fs::create_symlink("a", "sandbox/syma");
      std::system("tree sandbox");
-     for(auto i = fs::recursive_directory_iterator("sandbox");
-              i != fs::recursive_directory_iterator();
-            ++i ) {
-         std::cout << std::string(i.depth()*2, ' ') << *i;
-         if(fs::is_symlink(i->symlink_status()))
+     for (auto i = fs::recursive_directory_iterator("sandbox");
+          i != fs::recursive_directory_iterator();
+          ++i)
+     {
+         std::cout << std::string(i.depth() * 2, ' ') << *i;
+         if (fs::is_symlink(i->symlink_status()))
              std::cout << " -> " << fs::read_symlink(*i);
          std::cout << '\\n';
-
+  
          // do not descend into "b"
-         if(i->path().filename() == "b")
+         if (i->path().filename() == "b")
              i.disable_recursion_pending();
      }
      fs::remove_all("sandbox");
@@ -75,7 +76,7 @@ std::filesystem::recursive_directory_iterator::disable_recursion_pending \- std:
  │       │   └── e
  │       └── file1.txt
  └── syma -> a
-
+  
  "sandbox/a"
    "sandbox/a/b"
  "sandbox/syma" -> "a"
@@ -83,6 +84,6 @@ std::filesystem::recursive_directory_iterator::disable_recursion_pending \- std:
 .SH See also
 
    recursion_pending checks whether the recursion is disabled for the current directory
-                     \fI(public member function)\fP
+                     \fI(public member function)\fP 
    increment         advances to the next entry
-   operator++        \fI(public member function)\fP
+   operator++        \fI(public member function)\fP 

@@ -1,4 +1,4 @@
-.TH std::shared_timed_mutex 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::shared_timed_mutex 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::shared_timed_mutex \- std::shared_timed_mutex
 
@@ -12,7 +12,6 @@ std::shared_timed_mutex \- std::shared_timed_mutex
    shared_timed_mutex has two levels of access:
 
      * exclusive - only one thread can own the mutex.
-
      * shared - several threads can share ownership of the same mutex.
 
    Shared mutexes are usually used in situations when multiple readers can access the
@@ -30,45 +29,46 @@ std::shared_timed_mutex \- std::shared_timed_mutex
 .SH Member functions
 
    constructor           constructs the mutex
-                         \fI(public member function)\fP
+                         \fI(public member function)\fP 
    destructor            destroys the mutex
-                         \fI(public member function)\fP
+                         \fI(public member function)\fP 
    operator=             not copy-assignable
-   [deleted]             \fI(public member function)\fP
+   [deleted]             \fI(public member function)\fP 
          Exclusive locking
    lock                  locks the mutex, blocks if the mutex is not available
-                         \fI(public member function)\fP
+                         \fI(public member function)\fP 
    try_lock              tries to lock the mutex, returns if the mutex is not available
-                         \fI(public member function)\fP
+                         \fI(public member function)\fP 
                          tries to lock the mutex, returns if the mutex has been
    try_lock_for          unavailable for the specified timeout duration
-                         \fI(public member function)\fP
+                         \fI(public member function)\fP 
                          tries to lock the mutex, returns if the mutex has been
    try_lock_until        unavailable until specified time point has been reached
-                         \fI(public member function)\fP
+                         \fI(public member function)\fP 
    unlock                unlocks the mutex
-                         \fI(public member function)\fP
+                         \fI(public member function)\fP 
 .SH Shared locking
                          locks the mutex for shared ownership, blocks if the mutex is
    lock_shared           not available
-                         \fI(public member function)\fP
+                         \fI(public member function)\fP 
                          tries to lock the mutex for shared ownership, returns if the
    try_lock_shared       mutex is not available
-                         \fI(public member function)\fP
+                         \fI(public member function)\fP 
                          tries to lock the mutex for shared ownership, returns if the
    try_lock_shared_for   mutex has been
                          unavailable for the specified timeout duration
-                         \fI(public member function)\fP
+                         \fI(public member function)\fP 
                          tries to lock the mutex for shared ownership, returns if the
    try_lock_shared_until mutex has been
                          unavailable until specified time point has been reached
-                         \fI(public member function)\fP
+                         \fI(public member function)\fP 
    unlock_shared         unlocks the mutex (shared ownership)
-                         \fI(public member function)\fP
+                         \fI(public member function)\fP 
 
 .SH Notes
 
-   Feature-test macro: __cpp_lib_shared_timed_mutex
+        Feature-test macro       Value    Std           Feature
+   __cpp_lib_shared_timed_mutex 201402L \fI(C++14)\fP std::shared_timed_mutex
 
 .SH Example
 
@@ -76,14 +76,14 @@ std::shared_timed_mutex \- std::shared_timed_mutex
     Reason: build a motivating example
 
    A copy assignment operator for a class that holds resources that can handle multiple
-   readers, but only one writer
+   readers, but only one writer.
 
-
+   
 // Run this code
 
  #include <mutex>
  #include <shared_mutex>
-
+  
  class R
  {
      mutable std::shared_timed_mutex mut;
@@ -100,7 +100,11 @@ std::shared_timed_mutex \- std::shared_timed_mutex
          return *this;
      }
  };
-
- int main() {
+  
+ int main()
+ {
      R r;
  }
+
+.SH Category:
+     * Todo with reason

@@ -1,4 +1,4 @@
-.TH std::destroy 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::destroy 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::destroy \- std::destroy
 
@@ -15,14 +15,15 @@ std::destroy \- std::destroy
    1) Destroys the objects in the range [first, last), as if by
 
  for (; first != last; ++first)
-   std::destroy_at(std::addressof(*first));
+     std::destroy_at(std::addressof(*first));
 
-   2) Same as \fB(1)\fP, but executed according to policy. This overload does not participate
-   in overload resolution unless
-   std::is_execution_policy_v<std::decay_t<ExecutionPolicy>>
-   \fI(until C++20)\fP
-   std::is_execution_policy_v<std::remove_cvref_t<ExecutionPolicy>>
-   \fI(since C++20)\fP is true.
+   2) Same as \fB(1)\fP, but executed according to policy. This overload participates in
+   overload resolution only if
+
+   std::is_execution_policy_v<std::decay_t<ExecutionPolicy>> is true.        (until
+                                                                             C++20)
+   std::is_execution_policy_v<std::remove_cvref_t<ExecutionPolicy>> is true. (since
+                                                                             C++20)
 
 .SH Parameters
 
@@ -56,12 +57,12 @@ std::destroy \- std::destroy
 
 .SH Possible implementation
 
-   template< class ForwardIt >
+   template<class ForwardIt>
    constexpr // since C++20
-   void destroy( ForwardIt first, ForwardIt last )
+   void destroy(ForwardIt first, ForwardIt last)
    {
-     for (; first != last; ++first)
-       std::destroy_at(std::addressof(*first));
+       for (; first != last; ++first)
+           std::destroy_at(std::addressof(*first));
    }
 
 .SH Example
@@ -69,27 +70,28 @@ std::destroy \- std::destroy
    The following example demonstrates how to use destroy to destroy a contiguous
    sequence of elements.
 
-
+   
 // Run this code
 
+ #include <iostream>
  #include <memory>
  #include <new>
- #include <iostream>
-
- struct Tracer {
+  
+ struct Tracer
+ {
      int value;
      ~Tracer() { std::cout << value << " destructed\\n"; }
  };
-
+  
  int main()
  {
      alignas(Tracer) unsigned char buffer[sizeof(Tracer) * 8];
-
+  
      for (int i = 0; i < 8; ++i)
          new(buffer + sizeof(Tracer) * i) Tracer{i}; //manually construct objects
-
+  
      auto ptr = std::launder(reinterpret_cast<Tracer*>(buffer));
-
+  
      std::destroy(ptr, ptr + 8);
  }
 
@@ -107,8 +109,8 @@ std::destroy \- std::destroy
 .SH See also
 
    destroy_n       destroys a number of objects in a range
-   \fI(C++17)\fP         \fI(function template)\fP
+   \fI(C++17)\fP         \fI(function template)\fP 
    destroy_at      destroys an object at a given address
-   \fI(C++17)\fP         \fI(function template)\fP
+   \fI(C++17)\fP         \fI(function template)\fP 
    ranges::destroy destroys a range of objects
    (C++20)         (niebloid)

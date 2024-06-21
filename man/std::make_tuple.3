@@ -1,4 +1,4 @@
-.TH std::make_tuple 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::make_tuple 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::make_tuple \- std::make_tuple
 
@@ -29,17 +29,17 @@ std::make_tuple \- std::make_tuple
    {
        using type = T;
    };
-
+    
    template <class T>
    struct unwrap_refwrapper<std::reference_wrapper<T>>
    {
        using type = T&;
    };
-
+    
    template <class T>
    using unwrap_decay_t = typename unwrap_refwrapper<typename std::decay<T>::type>::type;
    // or use std::unwrap_ref_decay_t \fI(since C++20)\fP
-
+    
    template <class... Types>
    constexpr // since C++14
    std::tuple<unwrap_decay_t<Types>...> make_tuple(Types&&... args)
@@ -49,34 +49,36 @@ std::make_tuple \- std::make_tuple
 
 .SH Example
 
-
+   
 // Run this code
 
  #include <iostream>
  #include <tuple>
  #include <functional>
-
+  
  std::tuple<int, int> f() // this function returns multiple values
  {
      int x = 5;
      return std::make_tuple(x, 7); // return {x,7}; in C++17
  }
-
+  
  int main()
  {
      // heterogeneous tuple construction
      int n = 1;
      auto t = std::make_tuple(10, "Test", 3.14, std::ref(n), n);
      n = 7;
-     std::cout << "The value of t is "  << "("
-               << std::get<0>(t) << ", " << std::get<1>(t) << ", "
-               << std::get<2>(t) << ", " << std::get<3>(t) << ", "
+     std::cout << "The value of t is ("
+               << std::get<0>(t) << ", "
+               << std::get<1>(t) << ", "
+               << std::get<2>(t) << ", "
+               << std::get<3>(t) << ", "
                << std::get<4>(t) << ")\\n";
-
+  
      // function returning multiple values
      int a, b;
      std::tie(a, b) = f();
-     std::cout << a << " " << b << "\\n";
+     std::cout << a << ' ' << b << '\\n';
  }
 
 .SH Output:
@@ -88,10 +90,10 @@ std::make_tuple \- std::make_tuple
 
    tie              creates a tuple of lvalue references or unpacks a tuple into
    \fI(C++11)\fP          individual objects
-                    \fI(function template)\fP
+                    \fI(function template)\fP 
    forward_as_tuple creates a tuple of forwarding references
-   \fI(C++11)\fP          \fI(function template)\fP
+   \fI(C++11)\fP          \fI(function template)\fP 
    tuple_cat        creates a tuple by concatenating any number of tuples
-   \fI(C++11)\fP          \fI(function template)\fP
+   \fI(C++11)\fP          \fI(function template)\fP 
    apply            calls a function with a tuple of arguments
-   \fI(C++17)\fP          \fI(function template)\fP
+   \fI(C++17)\fP          \fI(function template)\fP 

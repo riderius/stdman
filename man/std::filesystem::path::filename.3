@@ -1,4 +1,4 @@
-.TH std::filesystem::path::filename 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::filesystem::path::filename 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::filesystem::path::filename \- std::filesystem::path::filename
 
@@ -23,25 +23,24 @@ std::filesystem::path::filename \- std::filesystem::path::filename
 
 .SH Example
 
-
+   
 // Run this code
 
- #include <iostream>
  #include <filesystem>
+ #include <iostream>
  namespace fs = std::filesystem;
-
+  
  int main()
  {
-     std::cout
-         << fs::path( "/foo/bar.txt" ).filename() << '\\n'
-         << fs::path( "/foo/.bar"    ).filename() << '\\n'
-         << fs::path( "/foo/bar/"    ).filename() << '\\n'
-         << fs::path( "/foo/."       ).filename() << '\\n'
-         << fs::path( "/foo/.."      ).filename() << '\\n'
-         << fs::path( "."            ).filename() << '\\n'
-         << fs::path( ".."           ).filename() << '\\n'
-         << fs::path( "/"            ).filename() << '\\n'
-         << fs::path( "//host"       ).filename() << '\\n';
+     std::cout << fs::path("/foo/bar.txt").filename() << '\\n'
+               << fs::path("/foo/.bar").filename() << '\\n'
+               << fs::path("/foo/bar/").filename() << '\\n'
+               << fs::path("/foo/.").filename() << '\\n'
+               << fs::path("/foo/..").filename() << '\\n'
+               << fs::path(".").filename() << '\\n'
+               << fs::path("..").filename() << '\\n'
+               << fs::path("/").filename() << '\\n'
+               << fs::path("//host").filename() << '\\n';
  }
 
 .SH Output:
@@ -59,11 +58,11 @@ std::filesystem::path::filename \- std::filesystem::path::filename
 .SH See also
 
    extension        returns the file extension path component
-                    \fI(public member function)\fP
+                    \fI(public member function)\fP 
                     returns the stem path component (filename without the final
    stem             extension)
-                    \fI(public member function)\fP
+                    \fI(public member function)\fP 
    replace_filename replaces the last path component with another path
-                    \fI(public member function)\fP
+                    \fI(public member function)\fP 
    has_filename     checks if the corresponding path element is not empty
                     \fI(public member function)\fP

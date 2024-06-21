@@ -1,11 +1,11 @@
-.TH std::chrono::weekday_indexed::weekday_indexed 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::chrono::weekday_indexed::weekday_indexed 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::chrono::weekday_indexed::weekday_indexed \- std::chrono::weekday_indexed::weekday_indexed
 
 .SH Synopsis
    weekday_indexed() = default;                                       \fB(1)\fP \fI(since C++20)\fP
-   constexpr weekday_indexed(const std::chrono::weekday& wd, unsigned \fB(2)\fP \fI(since C++20)\fP
-   index) noexcept;
+   constexpr weekday_indexed( const std::chrono::weekday& wd,         \fB(2)\fP \fI(since C++20)\fP
+   unsigned index ) noexcept;
 
    Constructs a weekday_indexed.
 
@@ -21,19 +21,20 @@ std::chrono::weekday_indexed::weekday_indexed \- std::chrono::weekday_indexed::w
 
 .SH Example
 
-
+   
 // Run this code
 
  #include <chrono>
  #include <iostream>
  using namespace std::chrono;
-
- int main() {
-   constexpr auto third_friday = weekday_indexed(Friday, 3); // uses constructor (2)
-   static_assert(third_friday == Friday[3]);
-
-   weekday_indexed wdi = Tuesday[2]; // represents the 2nd Tuesday
-   std::cout << year_month_day{ wdi / October / 2019y } << '\\n';
+  
+ int main()
+ {
+     constexpr auto third_friday = weekday_indexed(Friday, 3); // uses constructor (2)
+     static_assert(third_friday == Friday[3]);
+  
+     weekday_indexed wdi = Tuesday[2]; // represents the 2nd Tuesday
+     std::cout << year_month_day{ wdi / October / 2019y } << '\\n';
  }
 
 .SH Possible output:
@@ -44,4 +45,4 @@ std::chrono::weekday_indexed::weekday_indexed \- std::chrono::weekday_indexed::w
 
               convenience syntax for constructing a weekday_indexed or weekday_last
    operator[] from this weekday
-              \fI(public member function of std::chrono::weekday)\fP
+              \fI(public member function of std::chrono::weekday)\fP 

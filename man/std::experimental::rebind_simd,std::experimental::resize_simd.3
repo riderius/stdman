@@ -1,4 +1,4 @@
-.TH std::experimental::rebind_simd,std::experimental::resize_simd 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::experimental::rebind_simd,std::experimental::resize_simd 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::experimental::rebind_simd,std::experimental::resize_simd \- std::experimental::rebind_simd,std::experimental::resize_simd
 
@@ -35,29 +35,29 @@ std::experimental::rebind_simd,std::experimental::resize_simd \- std::experiment
 
 .SH Example
 
-
+   
 // Run this code
 
  #include <experimental/simd>
  #include <iostream>
-
+  
  namespace stdx = std::experimental;
  using floatv = stdx::native_simd<float>;
-
+  
  // use double precision internally
  floatv dp(floatv x)
  {
      using doublev = stdx::rebind_simd_t<double, floatv>;
      return stdx::static_simd_cast<floatv>(stdx::simd_cast<doublev>(x) - 1.234);
  }
-
- template <class T>
+  
+ template<class T>
  stdx::resize_simd_t<T::size() / 2, T> partial_reduction(T x)
  {
      auto [lo, hi] = stdx::split<stdx::resize_simd_t<T::size() / 2, T>>(x);
      return lo + hi;
  }
-
+  
  int main()
  {
      floatv x([](auto i) { return 1.234f + std::numeric_limits<float>::epsilon() * i; });
@@ -68,8 +68,12 @@ std::experimental::rebind_simd,std::experimental::resize_simd \- std::experiment
      std::cout << '\\n';
  }
 
+.SH Possible output:
+
+ 1.73569e-07 4.11987e-07
+
 .SH See also
 
    deduce              obtains an ABI type for given element type and number of
    deduce_t            elements
-   (parallelism TS v2) \fI(class template)\fP
+   (parallelism TS v2) \fI(class template)\fP 

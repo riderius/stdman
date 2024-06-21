@@ -1,4 +1,4 @@
-.TH std::feof 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::feof 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::feof \- std::feof
 
@@ -29,33 +29,34 @@ std::feof \- std::feof
 
 .SH Example
 
-
+   
 // Run this code
 
  #include <cstdio>
  #include <cstdlib>
-
+  
  int main()
  {
      int is_ok = EXIT_FAILURE;
      FILE* fp = std::fopen("/tmp/test.txt", "w+");
-     if(!fp) {
+     if (!fp)
+     {
          std::perror("File opening failed");
          return is_ok;
      }
-
-     int c; // note: int, not char, required to handle EOF
-     while ((c = std::fgetc(fp)) != EOF) { // standard C I/O file reading loop
-        std::putchar(c);
-     }
-
-     if (std::ferror(fp)) {
+  
+     int c; // Note: int, not char, required to handle EOF
+     while ((c = std::fgetc(fp)) != EOF) // Standard C I/O file reading loop
+         std::putchar(c);
+  
+     if (std::ferror(fp))
          std::puts("I/O error when reading");
-     } else if (std::feof(fp)) {
+     else if (std::feof(fp))
+     {
          std::puts("End of file reached successfully");
          is_ok = EXIT_SUCCESS;
      }
-
+  
      std::fclose(fp);
      return is_ok;
  }
@@ -67,10 +68,12 @@ std::feof \- std::feof
 .SH See also
 
    eof      checks if end-of-file has been reached
-            \fI(public member function of std::basic_ios<CharT,Traits>)\fP
+            \fI(public member function of std::basic_ios<CharT,Traits>)\fP 
    clearerr clears errors
-            \fI(function)\fP
+            \fI(function)\fP 
    perror   displays a character string corresponding of the current error to stderr
-            \fI(function)\fP
+            \fI(function)\fP 
    ferror   checks for a file error
-            \fI(function)\fP
+            \fI(function)\fP 
+   C documentation for
+   feof

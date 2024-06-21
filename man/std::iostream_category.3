@@ -1,4 +1,4 @@
-.TH std::iostream_category 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::iostream_category 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::iostream_category \- std::iostream_category
 
@@ -22,23 +22,26 @@ std::iostream_category \- std::iostream_category
 
 .SH Example
 
-
+   
 // Run this code
 
- #include <iostream>
  #include <fstream>
-
+ #include <iostream>
+  
  int main()
  {
      std::ifstream f("doesn't exist");
-     try {
+     try
+     {
          f.exceptions(f.failbit);
-     } catch (const std::ios_base::failure& e) {
+     }
+     catch (const std::ios_base::failure& e)
+     {
          std::cout << "Caught an ios_base::failure.\\n"
                    << "Error code: " << e.code().value()
                    << " (" << e.code().message() << ")\\n"
                    << "Error category: " << e.code().category().name() << '\\n';
-
+  
      }
  }
 
@@ -48,9 +51,17 @@ std::iostream_category \- std::iostream_category
  Error code: 1 (unspecified iostream_category error)
  Error category: iostream
 
+   Defect reports
+
+   The following behavior-changing defect reports were applied retroactively to
+   previously published C++ standards.
+
+      DR    Applied to            Behavior as published            Correct behavior
+   LWG 2087 C++11      iostream_category was not declared noexcept declared noexcept
+
 .SH See also
 
    failure stream exception
-           \fI(public member class of std::ios_base)\fP
+           \fI(public member class of std::ios_base)\fP 
    io_errc the IO stream error codes
-   \fI(C++11)\fP \fI(enum)\fP
+   \fI(C++11)\fP \fI(enum)\fP 

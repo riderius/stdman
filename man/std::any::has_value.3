@@ -1,4 +1,4 @@
-.TH std::any::has_value 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::any::has_value 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::any::has_value \- std::any::has_value
 
@@ -17,26 +17,26 @@ std::any::has_value \- std::any::has_value
 
 .SH Example
 
-
+   
 // Run this code
 
  #include <any>
  #include <iostream>
  #include <string>
-
+  
  int main()
  {
      std::boolalpha(std::cout);
-
+  
      std::any a0;
-     std::cout << "a0.has_value(): " << a0.has_value() << "\\n";
-
+     std::cout << "a0.has_value(): " << a0.has_value() << '\\n';
+  
      std::any a1 = 42;
      std::cout << "a1.has_value(): " << a1.has_value() << '\\n';
      std::cout << "a1 = " << std::any_cast<int>(a1) << '\\n';
      a1.reset();
      std::cout << "a1.has_value(): " << a1.has_value() << '\\n';
-
+  
      auto a2 = std::make_any<std::string>("Milky Way");
      std::cout << "a2.has_value(): " << a2.has_value() << '\\n';
      std::cout << "a2 = \\"" << std::any_cast<std::string&>(a2) << "\\"\\n";
@@ -57,4 +57,4 @@ std::any::has_value \- std::any::has_value
 .SH See also
 
    reset destroys contained object
-         \fI(public member function)\fP
+         \fI(public member function)\fP 

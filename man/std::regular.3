@@ -1,10 +1,10 @@
-.TH std::regular 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::regular 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::regular \- std::regular
 
 .SH Synopsis
    Defined in header <concepts>
-   template <class T>                                                     \fI(since C++20)\fP
+   template< class T >                                                    \fI(since C++20)\fP
    concept regular = std::semiregular<T> && std::equality_comparable<T>;
 
    The regular concept specifies that a type is regular, that is, it is copyable,
@@ -13,27 +13,28 @@ std::regular \- std::regular
 
 .SH Example
 
-
+   
 // Run this code
 
  #include <concepts>
  #include <iostream>
-
+  
  template<std::regular T>
- struct Single {
+ struct Single
+ {
      T value;
      friend bool operator==(const Single&, const Single&) = default;
  };
-
+  
  int main()
  {
      Single<int> myInt1{4};
      Single<int> myInt2;
      myInt2 = myInt1;
-
+  
      if (myInt1 == myInt2)
          std::cout << "Equal\\n";
-
+  
      std::cout << myInt1.value << ' ' << myInt2.value << '\\n';
  }
 
@@ -46,4 +47,4 @@ std::regular \- std::regular
 
    semiregular specifies that an object of a type can be copied, moved, swapped, and
    (C++20)     default constructed
-               (concept)
+               (concept) 

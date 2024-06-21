@@ -1,4 +1,4 @@
-.TH std::wctob 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::wctob 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::wctob \- std::wctob
 
@@ -22,33 +22,33 @@ std::wctob \- std::wctob
    EOF if c does not represent a multibyte character with length 1 in initial shift
    state.
 
-   Otherwise, the single-byte representation of c as unsigned char converted to int
+   Otherwise, the single-byte representation of c as unsigned char converted to int.
 
 .SH Example
 
-
+   
 // Run this code
 
  #include <clocale>
  #include <cwchar>
  #include <iostream>
-
+  
  void try_narrowing(wchar_t c)
  {
      int cn = std::wctob(c);
-     if(cn != EOF)
+     if (cn != EOF)
          std::cout << '\\'' << int(c) << "' narrowed to " << +cn << '\\n';
      else
          std::cout << '\\'' << int(c) << "' could not be narrowed\\n";
  }
-
+  
  int main()
  {
      std::setlocale(LC_ALL, "th_TH.utf8");
      std::cout << std::hex << std::showbase << "In Thai UTF-8 locale:\\n";
      try_narrowing(L'a');
      try_narrowing(L'๛');
-
+  
      std::setlocale(LC_ALL, "th_TH.tis620");
      std::cout << "In Thai TIS-620 locale:\\n";
      try_narrowing(L'a');
@@ -67,8 +67,10 @@ std::wctob \- std::wctob
 .SH See also
 
    btowc  widens a single-byte narrow character to wide character, if possible
-          \fI(function)\fP
+          \fI(function)\fP 
    narrow narrows characters
-          \fI(public member function of std::basic_ios<CharT,Traits>)\fP
+          \fI(public member function of std::basic_ios<CharT,Traits>)\fP 
    narrow invokes do_narrow
-          \fI(public member function of std::ctype<CharT>)\fP
+          \fI(public member function of std::ctype<CharT>)\fP 
+   C documentation for
+   wctob

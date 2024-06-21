@@ -1,4 +1,4 @@
-.TH std::ungetc 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::ungetc 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::ungetc \- std::ungetc
 
@@ -57,12 +57,12 @@ std::ungetc \- std::ungetc
 
    demonstrates the use of std::ungetc in its original purpose: implementing std::scanf
 
-
+   
 // Run this code
 
  #include <cctype>
  #include <cstdio>
-
+  
  void demo_scanf(const char* fmt, std::FILE* s)
  {
      while (*fmt != '\\0') {
@@ -91,7 +91,7 @@ std::ungetc \- std::ungetc
          }
      }
  }
-
+  
  int main()
  {
      if (std::FILE* f = std::fopen("input.txt", "w+")) {
@@ -110,4 +110,6 @@ std::ungetc \- std::ungetc
 .SH See also
 
    fgetc gets a character from a file stream
-   getc  \fI(function)\fP
+   getc  \fI(function)\fP 
+   C documentation for
+   ungetc

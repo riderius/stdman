@@ -1,4 +1,4 @@
-.TH std::variant_alternative,std::variant_alternative_t 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::variant_alternative,std::variant_alternative_t 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::variant_alternative,std::variant_alternative_t \- std::variant_alternative,std::variant_alternative_t
 
@@ -36,7 +36,7 @@ std::variant_alternative,std::variant_alternative_t \- std::variant_alternative,
    type        the type of Ith alternative of the variant, where I must be in [0,
                sizeof...(Types)), otherwise the program is ill-formed.
 
-  Helper template alias
+   Helper template alias
 
    template <size_t I, class T>
    using variant_alternative_t = typename variant_alternative<I,          \fI(since C++17)\fP
@@ -44,12 +44,12 @@ std::variant_alternative,std::variant_alternative_t \- std::variant_alternative,
 
 .SH Example
 
-
+   
 // Run this code
 
  #include <variant>
  #include <iostream>
-
+  
  using my_variant = std::variant<int, float>;
  static_assert(std::is_same_v
      <int,   std::variant_alternative_t<0, my_variant>>);
@@ -58,7 +58,7 @@ std::variant_alternative,std::variant_alternative_t \- std::variant_alternative,
  // cv-qualification on the variant type propagates to the extracted alternative type.
  static_assert(std::is_same_v
      <const int, std::variant_alternative_t<0, const my_variant>>);
-
+  
  int main()
  {
      std::cout << "All static assertions passed.\\n";
@@ -68,7 +68,7 @@ std::variant_alternative,std::variant_alternative_t \- std::variant_alternative,
 
  All static assertions passed.
 
-  Defect reports
+   Defect reports
 
    The following behavior-changing defect reports were applied retroactively to
    previously published C++ standards.
@@ -83,4 +83,4 @@ std::variant_alternative,std::variant_alternative_t \- std::variant_alternative,
    variant_size_v                 alternatives at compile time
    \fI(C++17)\fP                        \fI(class template)\fP (variable template)
    std::tuple_element<std::tuple> obtains the type of the specified element
-   \fI(C++11)\fP                        \fI(class template specialization)\fP
+   \fI(C++11)\fP                        \fI(class template specialization)\fP 

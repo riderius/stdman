@@ -1,4 +1,4 @@
-.TH std::fsetpos 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::fsetpos 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::fsetpos \- std::fsetpos
 
@@ -33,12 +33,12 @@ std::fsetpos \- std::fsetpos
 
 .SH Example
 
-
+   
 // Run this code
 
  #include <cstdio>
  #include <cstdlib>
-
+  
  int main()
  {
      // Prepare an array of floating-point values.
@@ -48,7 +48,7 @@ std::fsetpos \- std::fsetpos
      std::FILE * fp = std::fopen("test.bin", "wb");
      std::fwrite(A, sizeof(double), SIZE, fp);
      std::fclose(fp);
-
+  
      // Read the values into array B.
      double B[SIZE];
      fp = std::fopen("test.bin", "rb");
@@ -60,11 +60,11 @@ std::fsetpos \- std::fsetpos
                      __FILE__, __LINE__-3);
         std::exit(EXIT_FAILURE);
      }
-
+  
      int ret_code = std::fread(B, sizeof(double), 1, fp);      // read one value
      // current position: after reading one value
      std::printf("%.1f; read count = %d\\n", B[0], ret_code);   // print one value and ret_code
-
+  
      if (std::fsetpos(fp, &pos) != 0)   // reset current position to start of file
      {
         if (std::ferror(fp))
@@ -75,11 +75,11 @@ std::fsetpos \- std::fsetpos
            std::exit(EXIT_FAILURE);
         }
      }
-
+  
      ret_code = std::fread(B, sizeof(double), 1, fp);         // re-read first value
      std::printf("%.1f; read count = %d\\n", B[0], ret_code);  // print one value and ret_code
      std::fclose(fp);
-
+  
      return EXIT_SUCCESS;
  }
 
@@ -91,8 +91,10 @@ std::fsetpos \- std::fsetpos
 .SH See also
 
    fgetpos gets the file position indicator
-           \fI(function)\fP
+           \fI(function)\fP 
    ftell   returns the current file position indicator
-           \fI(function)\fP
+           \fI(function)\fP 
    fseek   moves the file position indicator to a specific location in a file
-           \fI(function)\fP
+           \fI(function)\fP 
+   C documentation for
+   fsetpos

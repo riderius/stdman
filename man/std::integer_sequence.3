@@ -1,4 +1,4 @@
-.TH std::integer_sequence 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::integer_sequence 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::integer_sequence \- std::integer_sequence
 
@@ -30,7 +30,7 @@ std::integer_sequence::size
 
    static constexpr std::size_t size() noexcept;
 
-   Returns the number of elements in Ints. Equivalent to sizeof...(Ints)
+   Returns the number of elements in Ints. Equivalent to sizeof...(Ints).
 
 .SH Parameters
 
@@ -40,22 +40,22 @@ std::integer_sequence::size
 
    The number of elements in Ints.
 
-  Helper templates
+   Helper templates
 
    A helper alias template std::index_sequence is defined for the common case where T
    is std::size_t:
 
-   template<std::size_t... Ints>
+   template< std::size_t... Ints >
    using index_sequence = std::integer_sequence<std::size_t, Ints...>;
 
    Helper alias templates std::make_integer_sequence and std::make_index_sequence are
    defined to simplify creation of std::integer_sequence and std::index_sequence types,
-   respectively, with 0, 1, 2, ..., N-1 as Ints:
+   respectively, with 0, 1, 2, ..., N - 1 as Ints:
 
-   template<class T, T N>
+   template< class T, T N >
    using make_integer_sequence = std::integer_sequence<T, /* a sequence 0, 1, 2, ...,
-   N-1 */ >;
-   template<std::size_t N>
+   N-1 */>;
+   template< std::size_t N >
    using make_index_sequence = std::make_integer_sequence<std::size_t, N>;
 
    The program is ill-formed if N is negative. If N is zero, the indicated type is
@@ -64,25 +64,27 @@ std::integer_sequence::size
    A helper alias template std::index_sequence_for is defined to convert any type
    parameter pack into an index sequence of the same length:
 
-   template<class... T>
+   template< class... T >
    using index_sequence_for = std::make_index_sequence<sizeof...(T)>;
 
 .SH Notes
 
-   Feature-test macro: __cpp_lib_integer_sequence
+       Feature-test macro      Value    Std              Feature
+   __cpp_lib_integer_sequence 201304L \fI(C++14)\fP Compile-time integer sequences
 
 .SH Example
 
    Note: see Possible Implementation in std::apply for another example.
 
-
+   
 // Run this code
 
- #include <tuple>
- #include <iostream>
  #include <array>
+ #include <cstddef>
+ #include <iostream>
+ #include <tuple>
  #include <utility>
-
+  
  // debugging aid
  template<typename T, T... ints>
  void print_sequence(std::integer_sequence<T, ints...> int_seq)
@@ -91,29 +93,29 @@ std::integer_sequence::size
      ((std::cout << ints << ' '), ...);
      std::cout << '\\n';
  }
-
+  
  // convert array into a tuple
  template<typename Array, std::size_t... I>
  auto a2t_impl(const Array& a, std::index_sequence<I...>)
  {
      return std::make_tuple(a[I]...);
  }
-
+  
  template<typename T, std::size_t N, typename Indices = std::make_index_sequence<N>>
  auto a2t(const std::array<T, N>& a)
  {
      return a2t_impl(a, Indices{});
  }
-
+  
  // pretty-print a tuple
  template<class Ch, class Tr, class Tuple, std::size_t... Is>
- void print_tuple_impl(std::basic_ostream<Ch,Tr>& os,
+ void print_tuple_impl(std::basic_ostream<Ch, Tr>& os,
                        const Tuple& t,
                        std::index_sequence<Is...>)
  {
      ((os << (Is == 0? "" : ", ") << std::get<Is>(t)), ...);
  }
-
+  
  template<class Ch, class Tr, class... Args>
  auto& operator<<(std::basic_ostream<Ch, Tr>& os,
                   const std::tuple<Args...>& t)
@@ -122,21 +124,21 @@ std::integer_sequence::size
      print_tuple_impl(os, t, std::index_sequence_for<Args...>{});
      return os << ")";
  }
-
+  
  int main()
  {
      print_sequence(std::integer_sequence<unsigned, 9, 2, 5, 1, 9, 1, 6>{});
      print_sequence(std::make_integer_sequence<int, 20>{});
      print_sequence(std::make_index_sequence<10>{});
      print_sequence(std::index_sequence_for<float, std::iostream, char>{});
-
+  
      std::array<int, 4> array = {1, 2, 3, 4};
-
+  
      // convert an array into a tuple
      auto tuple = a2t(array);
      static_assert(std::is_same_v<decltype(tuple),
                                   std::tuple<int, int, int, int>>, "");
-
+  
      // print it to cout
      std::cout << "The tuple: " << tuple << '\\n';
  }
@@ -151,5 +153,9 @@ std::integer_sequence::size
 
 .SH See also
 
-   to_array creates a std::array object from a built-in array
-   (C++20)  \fI(function template)\fP
+   to_array          creates a std::array object from a built-in array
+   (C++20)           \fI(function template)\fP 
+   integral_constant
+   bool_constant     compile-time constant of specified type with specified value
+   \fI(C++11)\fP           \fI(class template)\fP 
+   \fI(C++17)\fP

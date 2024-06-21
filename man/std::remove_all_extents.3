@@ -1,4 +1,4 @@
-.TH std::remove_all_extents 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::remove_all_extents 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::remove_all_extents \- std::remove_all_extents
 
@@ -10,7 +10,7 @@ std::remove_all_extents \- std::remove_all_extents
    If T is a multidimensional array of some type X, provides the member typedef type
    equal to X, otherwise type is T.
 
-   The behavior of a program that adds specializations for remove_all_extents is
+   If the program adds specializations for std::remove_all_extents, the behavior is
    undefined.
 
 .SH Member types
@@ -27,12 +27,12 @@ std::remove_all_extents \- std::remove_all_extents
 
    template<class T>
    struct remove_all_extents { typedef T type; };
-
+    
    template<class T>
    struct remove_all_extents<T[]> {
        typedef typename remove_all_extents<T>::type type;
    };
-
+    
    template<class T, std::size_t N>
    struct remove_all_extents<T[N]> {
        typedef typename remove_all_extents<T>::type type;
@@ -40,20 +40,20 @@ std::remove_all_extents \- std::remove_all_extents
 
 .SH Example
 
-
+   
 // Run this code
 
  #include <iostream>
  #include <type_traits>
  #include <typeinfo>
-
+  
  template<class A>
  void info(const A&)
  {
      typedef typename std::remove_all_extents<A>::type Type;
      std::cout << "underlying type: " << typeid(Type).name() << '\\n';
  }
-
+  
  int main()
  {
      float a0;
@@ -63,7 +63,7 @@ std::remove_all_extents \- std::remove_all_extents
      int a4[3][2];
      double a5[2][3];
      struct X { int m; } x0[3][3];
-
+  
      info(a0);
      info(a1);
      info(a2);
@@ -86,10 +86,10 @@ std::remove_all_extents \- std::remove_all_extents
 .SH See also
 
    is_array      checks if a type is an array type
-   \fI(C++11)\fP       \fI(class template)\fP
+   \fI(C++11)\fP       \fI(class template)\fP 
    rank          obtains the number of dimensions of an array type
-   \fI(C++11)\fP       \fI(class template)\fP
+   \fI(C++11)\fP       \fI(class template)\fP 
    extent        obtains the size of an array type along a specified dimension
-   \fI(C++11)\fP       \fI(class template)\fP
+   \fI(C++11)\fP       \fI(class template)\fP 
    remove_extent removes one extent from the given array type
-   \fI(C++11)\fP       \fI(class template)\fP
+   \fI(C++11)\fP       \fI(class template)\fP 

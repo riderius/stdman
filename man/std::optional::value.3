@@ -1,4 +1,4 @@
-.TH std::optional::value 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::optional::value 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::optional::value \- std::optional::value
 
@@ -31,29 +31,37 @@ std::optional::value \- std::optional::value
 
 .SH Example
 
-
+   
 // Run this code
 
- #include <optional>
  #include <iostream>
+ #include <optional>
+  
  int main()
  {
      std::optional<int> opt = {};
-
-     try {
+  
+     try
+     {
          [[maybe_unused]] int n = opt.value();
-     } catch(const std::bad_optional_access& e) {
+     }
+     catch(const std::bad_optional_access& e)
+     {
          std::cout << e.what() << '\\n';
      }
-     try {
+  
+     try
+     {
          opt.value() = 42;
-     } catch(const std::bad_optional_access& e) {
+     }
+     catch(const std::bad_optional_access& e)
+     {
          std::cout << e.what() << '\\n';
      }
-
+  
      opt = 43;
      std::cout << *opt << '\\n';
-
+  
      opt.value() = 44;
      std::cout << opt.value() << '\\n';
  }
@@ -69,9 +77,9 @@ std::optional::value \- std::optional::value
 
                        returns the contained value if available, another value
    value_or            otherwise
-                       \fI(public member function)\fP
+                       \fI(public member function)\fP 
    operator->          accesses the contained value
-   operator*           \fI(public member function)\fP
+   operator*           \fI(public member function)\fP 
    bad_optional_access exception indicating checked access to an optional that doesn't
    \fI(C++17)\fP             contain a value
-                       \fI(class)\fP
+                       \fI(class)\fP 

@@ -1,4 +1,4 @@
-.TH std::chrono::system_clock::from_time_t 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::chrono::system_clock::from_time_t 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::chrono::system_clock::from_time_t \- std::chrono::system_clock::from_time_t
 
@@ -21,26 +21,26 @@ std::chrono::system_clock::from_time_t \- std::chrono::system_clock::from_time_t
 
 .SH Example
 
-
+   
 // Run this code
 
- #include <iostream>
- #include <ctime>
  #include <chrono>
+ #include <ctime>
+ #include <iostream>
  #include <thread>
-
+  
  int main()
  {
      using namespace std::chrono_literals;
-
+  
      const std::time_t t = std::time(nullptr); // usually has "1 second" precision
-
+  
      const auto from = std::chrono::system_clock::from_time_t(t);
-
+  
      std::this_thread::sleep_for(500ms);
-
+  
      const auto diff = std::chrono::system_clock::now() - from;
-
+  
      std::cout << diff << " ("
                << std::chrono::round<std::chrono::milliseconds>(diff)
                << ")\\n";
@@ -53,4 +53,4 @@ std::chrono::system_clock::from_time_t \- std::chrono::system_clock::from_time_t
 .SH See also
 
    to_time_t converts a system clock time point to std::time_t
-   \fB[static]\fP  \fI(public static member function)\fP
+   \fB[static]\fP  \fI(public static member function)\fP 

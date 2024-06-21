@@ -1,4 +1,4 @@
-.TH std::map::empty 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::map::empty 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::map::empty \- std::map::empty
 
@@ -16,7 +16,7 @@ std::map::empty \- std::map::empty
 
 .SH Return value
 
-   true if the container is empty, false otherwise
+   true if the container is empty, false otherwise.
 
 .SH Complexity
 
@@ -24,22 +24,24 @@ std::map::empty \- std::map::empty
 
 .SH Example
 
+   
+
    The following code uses empty to check if a std::map<int, int> contains any
    elements:
 
-
+   
 // Run this code
 
- #include <map>
  #include <iostream>
+ #include <map>
  #include <utility>
-
+  
  int main()
  {
      std::map<int,int> numbers;
      std::cout << std::boolalpha;
      std::cout << "Initially, numbers.empty(): " << numbers.empty() << '\\n';
-
+  
      numbers.emplace(42, 13);
      numbers.insert(std::make_pair(13317, 123));
      std::cout << "After adding elements, numbers.empty(): " << numbers.empty() << '\\n';
@@ -53,6 +55,6 @@ std::map::empty \- std::map::empty
 .SH See also
 
    size    returns the number of elements
-           \fI(public member function)\fP
+           \fI(public member function)\fP 
    empty   checks whether the container is empty
-   \fI(C++17)\fP \fI(function template)\fP
+   \fI(C++17)\fP \fI(function template)\fP 

@@ -1,9 +1,10 @@
-.TH std::strstreambuf::pcount 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::strstreambuf::pcount 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::strstreambuf::pcount \- std::strstreambuf::pcount
 
 .SH Synopsis
-   int pcount() const;
+   int pcount() const;  (deprecated in C++98)
+                        (removed in C++26)
 
    Returns the number of characters written to the output sequence.
 
@@ -11,7 +12,7 @@ std::strstreambuf::pcount \- std::strstreambuf::pcount
    returns zero.
 
    Otherwise, returns the next pointer in the put area minus the beginning pointer in
-   the put area, that is pptr() - pbase()
+   the put area, that is pptr() - pbase().
 
 .SH Parameters
 
@@ -23,12 +24,12 @@ std::strstreambuf::pcount \- std::strstreambuf::pcount
 
 .SH Example
 
-
+   
 // Run this code
 
- #include <strstream>
  #include <iostream>
-
+ #include <strstream>
+  
  int main()
  {
      std::strstream dyn; // dynamically-allocated output buffer
@@ -38,14 +39,14 @@ std::strstreambuf::pcount \- std::strstreambuf::pcount
                << buf->pcount() // or just buf.pcount()
                << " and it holds \\"" << dyn.str() << "\\"\\n";
      dyn.freeze(false); // after calling .str() on a dynamic strstream
-
+  
      char arr[10];
      std::ostrstream user(arr, 10); // user-provided output buffer
      buf = user.rdbuf();
      user << 1.23; // note: no std::ends
      std::cout.write(arr, buf->pcount()); // or just user.pcount()
      std::cout << '\\n';
-
+  
      std::istrstream lit("1 2 3"); // read-only fixed-size buffer
      buf = lit.rdbuf();
      // istrstream has no member pcount(), so lit.pcount() won't work
@@ -61,6 +62,6 @@ std::strstreambuf::pcount \- std::strstreambuf::pcount
 .SH See also
 
    pcount obtains the number of characters written
-          \fI(public member function of std::strstream)\fP
+          \fI(public member function of std::strstream)\fP 
    pcount obtains the number of characters written
-          \fI(public member function of std::ostrstream)\fP
+          \fI(public member function of std::ostrstream)\fP 

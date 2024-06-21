@@ -1,12 +1,12 @@
-.TH std::chrono::ceil(std::chrono::duration) 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::chrono::ceil(std::chrono::duration) 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::chrono::ceil(std::chrono::duration) \- std::chrono::ceil(std::chrono::duration)
 
 .SH Synopsis
    Defined in header <chrono>
-   template <class ToDuration, class Rep, class Period>
-   constexpr ToDuration ceil(const std::chrono::duration<Rep, Period>&    \fI(since C++17)\fP
-   d);
+   template< class ToDuration, class Rep, class Period >
+   constexpr ToDuration ceil( const std::chrono::duration<Rep, Period>&   \fI(since C++17)\fP
+   d );
 
    Returns the smallest duration t representable in ToDuration that is greater or equal
    to d.
@@ -24,14 +24,15 @@ std::chrono::ceil(std::chrono::duration) \- std::chrono::ceil(std::chrono::durat
 
 .SH Possible implementation
 
-   namespace detail {
-   template<class> inline constexpr bool is_duration_v = false;
-   template<class Rep, class Period> inline constexpr bool is_duration_v<
-       std::chrono::duration<Rep, Period>> = true;
+   namespace detail
+   {
+       template<class> inline constexpr bool is_duration_v = false;
+       template<class Rep, class Period> inline constexpr bool is_duration_v<
+           std::chrono::duration<Rep, Period>> = true;
    }
-
-   template <class To, class Rep, class Period,
-             class = std::enable_if_t<detail::is_duration_v<To>>>
+    
+   template<class To, class Rep, class Period,
+            class = std::enable_if_t<detail::is_duration_v<To>>>
    constexpr To ceil(const std::chrono::duration<Rep, Period>& d)
    {
        To t = std::chrono::duration_cast<To>(d);
@@ -42,17 +43,17 @@ std::chrono::ceil(std::chrono::duration) \- std::chrono::ceil(std::chrono::durat
 
 .SH Example
 
-
+   
 // Run this code
 
- #include <iostream>
  #include <chrono>
-
+ #include <iostream>
+  
  int main()
  {
      using namespace std::chrono_literals;
      using Min = std::chrono::minutes;
-
+  
      std::cout
          << std::showpos
          << "ceil(+2.4min) = " << std::chrono::ceil<Min>(+2.4min).count() << "min\\n"
@@ -70,16 +71,16 @@ std::chrono::ceil(std::chrono::duration) \- std::chrono::ceil(std::chrono::durat
 
    duration_cast                 converts a duration to another, with a different tick
    \fI(C++11)\fP                       interval
-                                 \fI(function template)\fP
+                                 \fI(function template)\fP 
    floor(std::chrono::duration)  converts a duration to another, rounding down
-   \fI(C++17)\fP                       \fI(function template)\fP
+   \fI(C++17)\fP                       \fI(function template)\fP 
    round(std::chrono::duration)  converts a duration to another, rounding to nearest,
    \fI(C++17)\fP                       ties to even
-                                 \fI(function template)\fP
+                                 \fI(function template)\fP 
    ceil(std::chrono::time_point) converts a time_point to another, rounding up
-   \fI(C++17)\fP                       \fI(function template)\fP
+   \fI(C++17)\fP                       \fI(function template)\fP 
    ceil
    ceilf                         nearest integer not less than the given value
-   ceill                         \fI(function)\fP
+   ceill                         \fI(function)\fP 
    \fI(C++11)\fP
    \fI(C++11)\fP

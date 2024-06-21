@@ -1,4 +1,4 @@
-.TH std::experimental::source_location::line 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::experimental::source_location::line 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::experimental::source_location::line \- std::experimental::source_location::line
 
@@ -17,14 +17,14 @@ std::experimental::source_location::line \- std::experimental::source_location::
 
 .SH Example
 
-
+   
 // Run this code
 
  #include <experimental/source_location>
- #include <string_view>
  #include <iostream>
+ #include <string_view>
  using std::experimental::source_location;
-
+  
  inline void cur_line(
      const std::string_view message = "",
      const source_location& location = source_location::current())
@@ -34,8 +34,8 @@ std::experimental::source_location::line \- std::experimental::source_location::
          << ") "
          << message;
  }
-
- auto main() -> int
+  
+ int main()
  {
      cur_line("++" "\\n");
      cur_line(); std::cout << "Hello," "\\n";
@@ -53,8 +53,10 @@ std::experimental::source_location::line \- std::experimental::source_location::
 .SH See also
 
    column        return the column number represented by this object
-                 \fI(public member function)\fP
+                 \fI(public member function)\fP 
    file_name     return the file name represented by this object
-                 \fI(public member function)\fP
+                 \fI(public member function)\fP 
    function_name return the name of the function represented by this object, if any
-                 \fI(public member function)\fP
+                 \fI(public member function)\fP 
+   C++ documentation for
+   Filename and line information

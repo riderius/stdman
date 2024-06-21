@@ -1,10 +1,10 @@
-.TH std::basic_ostream::swap 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::basic_ostream::swap 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::basic_ostream::swap \- std::basic_ostream::swap
 
 .SH Synopsis
-   protected:                      \fI(since C++11)\fP
-   void swap(basic_ostream& rhs);
+   protected:                        \fI(since C++11)\fP
+   void swap( basic_ostream& rhs );
 
    Calls basic_ios::swap(rhs) to swap all data members of the base class, except for
    rdbuf(), between *this and rhs. This swap function is protected: it is called by the
@@ -18,22 +18,23 @@ std::basic_ostream::swap \- std::basic_ostream::swap
 
 .SH Example
 
-
+   
 // Run this code
 
- #include <sstream>
  #include <iostream>
+ #include <sstream>
  #include <utility>
+  
  int main()
  {
      std::ostringstream s1("hello");
      std::ostringstream s2("bye");
-
+  
      s1.swap(s2); // OK, ostringstream has a public swap()
      std::swap(s1, s2); // OK, calls s1.swap(s2)
-
+  
  //  std::cout.swap(s2); // ERROR: swap is a protected member
-
+  
      std::cout << s1.str() << '\\n';
  }
 

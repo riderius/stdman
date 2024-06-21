@@ -1,10 +1,10 @@
-.TH std::list::back 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::list::back 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::list::back \- std::list::back
 
 .SH Synopsis
-   reference back();
-   const_reference back() const;
+   reference back();             \fB(1)\fP
+   const_reference back() const; \fB(2)\fP
 
    Returns a reference to the last element in the container.
 
@@ -25,25 +25,24 @@ std::list::back \- std::list::back
 .SH Notes
 
    For a non-empty container c, the expression c.back() is equivalent to
-   *std::prev(c.end())
+   *std::prev(c.end()).
 
 .SH Example
 
    The following code uses back to display the last element of a std::list<char>:
 
-
+   
 // Run this code
 
  #include <list>
  #include <iostream>
-
+  
  int main()
  {
-     std::list<char> letters {'a', 'b', 'c', 'd', 'e', 'f'};
-
-     if (!letters.empty()) {
+     std::list<char> letters{'a', 'b', 'c', 'd', 'e', 'f'};
+  
+     if (!letters.empty())
          std::cout << "The last character is '" << letters.back() << "'.\\n";
-     }
  }
 
 .SH Output:
@@ -53,4 +52,4 @@ std::list::back \- std::list::back
 .SH See also
 
    front access the first element
-         \fI(public member function)\fP
+         \fI(public member function)\fP 

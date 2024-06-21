@@ -1,4 +1,4 @@
-.TH std::pointer_traits::pointer_to 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::pointer_traits::pointer_to 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::pointer_traits::pointer_to \- std::pointer_traits::pointer_to
 
@@ -26,7 +26,7 @@ std::pointer_traits::pointer_to \- std::pointer_traits::pointer_to
    simply calls Ptr::pointer_to(r), and if Ptr does not provide a static member
    function pointer_to, instantiation of this function is a compile-time error.
    2) The version of this function in the specialization of std::pointer_traits for
-   pointer types returns std::addressof(r)
+   pointer types returns std::addressof(r).
 
 .SH Parameters
 
@@ -39,7 +39,7 @@ std::pointer_traits::pointer_to \- std::pointer_traits::pointer_to
 
 .SH Exceptions
 
-   1) Unspecified (typically same as Ptr::pointer_to)
+   1) Unspecified (typically same as Ptr::pointer_to).
 
 .SH Notes
 
@@ -50,12 +50,12 @@ std::pointer_traits::pointer_to \- std::pointer_traits::pointer_to
 
    addressof                  obtains actual address of an object, even if the &
    \fI(C++11)\fP                    operator is overloaded
-                              \fI(function template)\fP
+                              \fI(function template)\fP 
    address                    obtains the address of an object, even if operator& is
    \fI(until C++20)\fP              overloaded
-                              \fI(public member function of std::allocator<T>)\fP
+                              \fI(public member function of std::allocator<T>)\fP 
    to_address                 obtains a raw pointer from a fancy pointer (inverse of
    \fB[static]\fP (C++20)(optional) pointer_to)
-                              \fI(public static member function)\fP
+                              \fI(public static member function)\fP 
    to_address                 obtains a raw pointer from a pointer-like type
-   (C++20)                    \fI(function template)\fP
+   (C++20)                    \fI(function template)\fP 

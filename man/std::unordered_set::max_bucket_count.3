@@ -1,4 +1,4 @@
-.TH std::unordered_set::max_bucket_count 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::unordered_set::max_bucket_count 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::unordered_set::max_bucket_count \- std::unordered_set::max_bucket_count
 
@@ -22,21 +22,21 @@ std::unordered_set::max_bucket_count \- std::unordered_set::max_bucket_count
 
 .SH Example
 
-
+   
 // Run this code
 
  #include <iostream>
  #include <unordered_set>
-
+  
  int main()
  {
      struct Ha { std::size_t operator()(long x) const { return std::hash<long>{}(x); }; };
-
+  
      auto c1 = std::unordered_set<char>{};
      auto c2 = std::unordered_set<long>{};
      auto c3 = std::unordered_set<long, std::hash<int>>{};
      auto c4 = std::unordered_set<long, Ha>{};
-
+  
      std::cout
          << "Max bucket count of\\n" << std::hex << std::showbase
          << "c1: " << c1.max_bucket_count() << '\\n'
@@ -57,4 +57,4 @@ std::unordered_set::max_bucket_count \- std::unordered_set::max_bucket_count
 .SH See also
 
    bucket_count returns the number of buckets
-   \fI(C++11)\fP      \fI(public member function)\fP
+                \fI(public member function)\fP 

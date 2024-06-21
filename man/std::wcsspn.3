@@ -1,4 +1,4 @@
-.TH std::wcsspn 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::wcsspn 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::wcsspn \- std::wcsspn
 
@@ -18,24 +18,24 @@ std::wcsspn \- std::wcsspn
 .SH Return value
 
    The length of the maximum initial segment that contains only characters from wide
-   string pointed to by src
+   string pointed to by src.
 
 .SH Example
 
-
+   
 // Run this code
 
  #include <cwchar>
  #include <iostream>
  #include <locale>
-
+  
  int main()
  {
      wchar_t dest[] = L"白猫 黑狗 甲虫";
      const wchar_t src[] = L" 狗猫 白黑 ";
      const std::size_t len = std::wcsspn(dest, src);
      dest[len] = L'\\0'; // terminates the segment to print it out
-
+  
      std::wcout.imbue(std::locale("en_US.utf8"));
      std::wcout << L"The length of maximum initial segment is " << len << L".\\n";
      std::wcout << L"The segment is \\"" << dest << L"\\".\\n";
@@ -50,7 +50,9 @@ std::wcsspn \- std::wcsspn
 
            returns the length of the maximum initial segment that consists
    wcscspn of only the wide not found in another wide string
-           \fI(function)\fP
+           \fI(function)\fP 
            finds the first location of any wide character in one wide string, in
    wcspbrk another wide string
-           \fI(function)\fP
+           \fI(function)\fP 
+   C documentation for
+   wcsspn

@@ -1,4 +1,4 @@
-.TH std::filesystem::directory_iterator 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::filesystem::directory_iterator 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::filesystem::directory_iterator \- std::filesystem::directory_iterator
 
@@ -32,20 +32,20 @@ std::filesystem::directory_iterator \- std::filesystem::directory_iterator
 .SH Member functions
 
    constructor   constructs a directory iterator
-                 \fI(public member function)\fP
+                 \fI(public member function)\fP 
    destructor    default destructor
-                 \fI(public member function)\fP
+                 \fI(public member function)\fP 
    operator=     assigns contents
-                 \fI(public member function)\fP
+                 \fI(public member function)\fP 
    operator*     accesses the pointed-to entry
-   operator->    \fI(public member function)\fP
+   operator->    \fI(public member function)\fP 
    increment     advances to the next entry
-   operator++    \fI(public member function)\fP
+   operator++    \fI(public member function)\fP 
 
 .SH Non-member functions
 
    begin(std::filesystem::directory_iterator) range-based for loop support
-   end(std::filesystem::directory_iterator)   \fI(function)\fP
+   end(std::filesystem::directory_iterator)   \fI(function)\fP 
    \fI(C++17)\fP
 
    Additionally,
@@ -58,13 +58,13 @@ std::filesystem::directory_iterator \- std::filesystem::directory_iterator
    whether operator!= is provided because it can be synthesized from operator==, and
    \fI(since C++20)\fP whether an equality operator is a member or non-member.
 
-  Helper templates
+   Helper templates
 
    namespace std::ranges {
 
    template<>                                                                   (since
    inline constexpr bool                                                        C++20)
-   enable_borrowed_range<std::filesystem::directory_iterator> = true;
+       enable_borrowed_range<std::filesystem::directory_iterator> = true;
 
    }
    namespace std::ranges {
@@ -89,41 +89,36 @@ std::filesystem::directory_iterator \- std::filesystem::directory_iterator
 
 .SH Example
 
-
+   
 // Run this code
 
+ #include <algorithm>
+ #include <filesystem>
  #include <fstream>
  #include <iostream>
- #include <filesystem>
- #include <algorithm>
-
+  
  int main()
  {
      const std::filesystem::path sandbox{"sandbox"};
      std::filesystem::create_directories(sandbox/"dir1"/"dir2");
      std::ofstream{sandbox/"file1.txt"};
      std::ofstream{sandbox/"file2.txt"};
-
+  
      std::cout << "directory_iterator:\\n";
      // directory_iterator can be iterated using a range-for loop
      for (auto const& dir_entry : std::filesystem::directory_iterator{sandbox})
-     {
          std::cout << dir_entry.path() << '\\n';
-     }
-
+  
      std::cout << "\\ndirectory_iterator as a range:\\n";
      // directory_iterator behaves as a range in other ways, too
-     std::ranges::for_each( std::filesystem::directory_iterator{sandbox},
-                            [](const auto& dir_entry) {
-                              std::cout << dir_entry << '\\n';
-                            } );
-
+     std::ranges::for_each(
+         std::filesystem::directory_iterator{sandbox},
+         [](const auto& dir_entry) { std::cout << dir_entry << '\\n'; });
+  
      std::cout << "\\nrecursive_directory_iterator:\\n";
      for (auto const& dir_entry : std::filesystem::recursive_directory_iterator{sandbox})
-     {
          std::cout << dir_entry << '\\n';
-     }
-
+  
      // delete the sandbox dir and all contents within it, including subdirs
      std::filesystem::remove_all(sandbox);
  }
@@ -134,19 +129,19 @@ std::filesystem::directory_iterator \- std::filesystem::directory_iterator
  "sandbox/file2.txt"
  "sandbox/file1.txt"
  "sandbox/dir1"
-
+  
  directory_iterator as a range:
  "sandbox/file2.txt"
  "sandbox/file1.txt"
  "sandbox/dir1"
-
+  
  recursive_directory_iterator:
  "sandbox/file2.txt"
  "sandbox/file1.txt"
  "sandbox/dir1"
  "sandbox/dir1/dir2"
 
-  Defect reports
+   Defect reports
 
    The following behavior-changing defect reports were applied retroactively to
    previously published C++ standards.
@@ -159,8 +154,8 @@ std::filesystem::directory_iterator \- std::filesystem::directory_iterator
 
    recursive_directory_iterator an iterator to the contents of a directory and its
    \fI(C++17)\fP                      subdirectories
-                                \fI(class)\fP
+                                \fI(class)\fP 
    directory_options            options for iterating directory contents
-   \fI(C++17)\fP                      \fI(enum)\fP
+   \fI(C++17)\fP                      \fI(enum)\fP 
    directory_entry              a directory entry
-   \fI(C++17)\fP                      \fI(class)\fP
+   \fI(C++17)\fP                      \fI(class)\fP 

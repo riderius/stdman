@@ -1,4 +1,4 @@
-.TH std::normal_distribution 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::normal_distribution 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::normal_distribution \- std::normal_distribution
 
@@ -10,39 +10,39 @@ std::normal_distribution \- std::normal_distribution
    Generates random numbers according to the Normal (or Gaussian) random number
    distribution. It is defined as:
 
-           \\(\\small{f(x;\\mu,\\sigma)}=\\frac{1}{\\sigma\\sqrt{2\\pi}
-           }\\exp{(-\\frac{1}{2}{(\\frac{x-\\mu}{\\sigma})}^2)}\\)f(x; μ,σ) =
+   \\(\\small{f(x;\\mu,\\sigma)}=\\frac{1}{\\sigma\\sqrt{2\\pi}
+   }\\exp{(-\\frac{1}{2}{(\\frac{x-\\mu}{\\sigma})}^2)}\\)f(x; μ,σ) =
 
-           1
-           σ
-           √
-           2π
+   1
+   σ
+   √
+   2π
 
-           exp⎛
-           ⎜
-           ⎝
+   exp⎛
+   ⎜
+   ⎝
 
-           -1
-           2
+   -1
+   2
 
-           ⎛
-           ⎜
-           ⎝
+   ⎛
+   ⎜
+   ⎝
 
-           x-μ
-           σ
+   x-μ
+   σ
 
-           ⎞
-           ⎟
-           � 2
-           ⎞
-           ⎟
-           �
+   ⎞
+   ⎟
+   ⎠2
+   ⎞
+   ⎟
+   ⎠
 
-   Here \\(\\small\\mu\\)μ is the mean and \\(\\small\\sigma\\)σ is the standard deviation
+   Here \\(\\small\\mu\\)μ is the Mean and \\(\\small\\sigma\\)σ is the Standard deviation
    (stddev).
 
-   std::normal_distribution satisfies all requirements of RandomNumberDistribution
+   std::normal_distribution satisfies all requirements of RandomNumberDistribution.
 
 .SH Template parameters
 
@@ -51,67 +51,70 @@ std::normal_distribution \- std::normal_distribution
 
 .SH Member types
 
-   Member type        Definition
-   result_type\fI(C++11)\fP RealType
-   param_type\fI(C++11)\fP  the type of the parameter set, see RandomNumberDistribution.
+   Member type         Definition
+   result_type \fI(C++11)\fP RealType
+   param_type \fI(C++11)\fP  the type of the parameter set, see RandomNumberDistribution.
 
 .SH Member functions
 
    constructor   constructs new distribution
-   \fI(C++11)\fP       \fI(public member function)\fP
+   \fI(C++11)\fP       \fI(public member function)\fP 
    reset         resets the internal state of the distribution
-   \fI(C++11)\fP       \fI(public member function)\fP
+   \fI(C++11)\fP       \fI(public member function)\fP 
 .SH Generation
    operator()    generates the next random number in the distribution
-   \fI(C++11)\fP       \fI(public member function)\fP
+   \fI(C++11)\fP       \fI(public member function)\fP 
 .SH Characteristics
    mean          returns the distribution parameters
-   stddev        \fI(public member function)\fP
+   stddev        \fI(public member function)\fP 
+   \fI(C++11)\fP
    param         gets or sets the distribution parameter object
-   \fI(C++11)\fP       \fI(public member function)\fP
+   \fI(C++11)\fP       \fI(public member function)\fP 
    min           returns the minimum potentially generated value
-   \fI(C++11)\fP       \fI(public member function)\fP
+   \fI(C++11)\fP       \fI(public member function)\fP 
    max           returns the maximum potentially generated value
-   \fI(C++11)\fP       \fI(public member function)\fP
+   \fI(C++11)\fP       \fI(public member function)\fP 
 
 .SH Non-member functions
 
    operator==
    operator!=                compares two distribution objects
-   \fI(C++11)\fP                   \fI(function)\fP
+   \fI(C++11)\fP                   \fI(function)\fP 
    \fI(C++11)\fP(removed in C++20)
    operator<<                performs stream input and output on pseudo-random number
    operator>>                distribution
-   \fI(C++11)\fP                   \fI(function template)\fP
+   \fI(C++11)\fP                   \fI(function template)\fP 
 
 .SH Example
 
-
+   
 // Run this code
 
- #include <iostream>
+ #include <cmath>
  #include <iomanip>
- #include <string>
+ #include <iostream>
  #include <map>
  #include <random>
- #include <cmath>
+ #include <string>
+  
  int main()
  {
      std::random_device rd{};
      std::mt19937 gen{rd()};
-
+  
      // values near the mean are the most likely
      // standard deviation affects the dispersion of generated values from the mean
-     std::normal_distribution<> d{5,2};
-
+     std::normal_distribution d{5.0, 2.0};
+  
+     // draw a sample from the normal distribution and round it to an integer
+     auto random_int = [&d, &gen]{ return std::round(d(gen)); };
+  
      std::map<int, int> hist{};
-     for(int n=0; n<10000; ++n) {
-         ++hist[std::round(d(gen))];
-     }
-     for(auto p : hist) {
-         std::cout << std::setw(2)
-                   << p.first << ' ' << std::string(p.second/200, '*') << '\\n';
-     }
+     for (int n = 0; n != 10000; ++n)
+         ++hist[random_int()];
+  
+     for (auto [x, y] : hist)
+         std::cout << std::setw(2) << x << ' ' << std::string(y / 200, '*') << '\\n';
  }
 
 .SH Possible output:
@@ -134,6 +137,6 @@ std::normal_distribution \- std::normal_distribution
 
 .SH External links
 
-     * Weisstein, Eric W. "Normal Distribution." From MathWorld--A Wolfram Web
+   1.  Weisstein, Eric W. "Normal Distribution." From MathWorld — A Wolfram Web
        Resource.
-     * Normal Distribution. From Wikipedia.
+   2.  Normal distribution — From Wikipedia.

@@ -1,4 +1,4 @@
-.TH std::va_list 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::va_list 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::va_list \- std::va_list
 
@@ -6,8 +6,9 @@ std::va_list \- std::va_list
    Defined in header <cstdarg>
    typedef /* unspecified */ va_list;
 
-   va_list is a complete object type suitable for holding the information needed by the
-   macros va_start, va_copy, va_arg, and va_end.
+   va_list is a complete object type (in practice, a unique built-in type or char*)
+   suitable for holding the information needed by the macros va_start, va_copy, va_arg,
+   and va_end.
 
    If a va_list instance is created, passed to another function, and used via va_arg in
    that function, then any subsequent use in the calling function should be preceded by
@@ -19,10 +20,12 @@ std::va_list \- std::va_list
 .SH See also
 
    va_start enables access to variadic function arguments
-            \fI(function macro)\fP
+            \fI(function macro)\fP 
    va_copy  makes a copy of the variadic function arguments
-   \fI(C++11)\fP  \fI(function macro)\fP
+   \fI(C++11)\fP  \fI(function macro)\fP 
    va_arg   accesses the next variadic function argument
-            \fI(function macro)\fP
+            \fI(function macro)\fP 
    va_end   ends traversal of the variadic function arguments
-            \fI(function macro)\fP
+            \fI(function macro)\fP 
+   C documentation for
+   va_list

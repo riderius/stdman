@@ -1,4 +1,4 @@
-.TH std::ranges::drop_view::end 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::ranges::drop_view::end 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::ranges::drop_view::end \- std::ranges::drop_view::end
 
@@ -16,28 +16,27 @@ std::ranges::drop_view::end \- std::ranges::drop_view::end
 
 .SH Return value
 
-   a sentinel or an iterator representing the end of the view
+   A sentinel or an iterator representing the end of the view.
 
 .SH Example
 
-
+   
 // Run this code
 
  #include <algorithm>
  #include <iostream>
  #include <iterator>
  #include <ranges>
-
+  
  int main()
  {
-     constexpr char url[]{ "https://cppreference.com" };
-
+     constexpr char url[]{"https://cppreference.com"};
+  
      const auto p = std::distance(std::ranges::begin(url), std::ranges::find(url, '/'));
-     auto site = std::ranges::drop_view{ url, p + 2 }; // drop the prefix "https://"
-
-     for (auto it = site.begin(); it != site.end(); ++it) {
+     auto site = std::ranges::drop_view{url, p + 2}; // drop the prefix "https://"
+  
+     for (auto it = site.begin(); it != site.end(); ++it)
          std::cout << *it; //                ^^^
-     }
      std::cout << '\\n';
  }
 
@@ -48,7 +47,7 @@ std::ranges::drop_view::end \- std::ranges::drop_view::end
 .SH See also
 
    begin         returns an iterator to the beginning
-   (C++20)       \fI(public member function)\fP
+   (C++20)       \fI(public member function)\fP 
    ranges::begin returns an iterator to the beginning of a range
    (C++20)       (customization point object)
    ranges::end   returns a sentinel indicating the end of a range

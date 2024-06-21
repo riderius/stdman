@@ -1,4 +1,4 @@
-.TH std::set::extract 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::set::extract 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::set::extract \- std::set::extract
 
@@ -45,53 +45,58 @@ std::set::extract \- std::set::extract
 
 .SH Complexity
 
-   1) amortized constant
-   2,3) log(a.size())
+   1) Amortized constant.
+   2,3) log(size())
 
 .SH Notes
 
-   extract is the only way to take a move-only object out of a set
+   extract is the only way to take a move-only object out of a set:
 
  std::set<move_only_type> s;
  s.emplace(...);
  move_only_type mot = std::move(s.extract(s.begin()).value());
 
-   Feature-test macro: __cpp_lib_associative_heterogeneous_erasure (for overload \fB(3)\fP)
+               Feature-test macro               Value    Std           Feature
+                                                               Heterogeneous erasure in
+                                                               associative containers
+   __cpp_lib_associative_heterogeneous_erasure 202110L (C++23) and unordered
+                                                               associative containers,
+                                                               \fB(3)\fP
 
 .SH Example
 
-
+   
 // Run this code
 
  #include <algorithm>
  #include <iostream>
  #include <string_view>
  #include <set>
-
+  
  void print(std::string_view comment, const auto& data)
  {
      std::cout << comment;
      for (auto datum : data)
          std::cout << ' ' << datum;
-
+  
      std::cout << '\\n';
  }
-
+  
  int main()
  {
      std::set<int> cont{1, 2, 3};
-
+  
      print("Start:", cont);
-
+  
      // Extract node handle and change key
      auto nh = cont.extract(1);
      nh.value() = 4;
-
+  
      print("After extract and before insert:", cont);
-
+  
      // Insert node handle back
      cont.insert(std::move(nh));
-
+  
      print("End:", cont);
  }
 
@@ -104,10 +109,10 @@ std::set::extract \- std::set::extract
 .SH See also
 
    merge   splices nodes from another container
-   \fI(C++17)\fP \fI(public member function)\fP
+   \fI(C++17)\fP \fI(public member function)\fP 
            inserts elements
    insert  or nodes
            \fI(since C++17)\fP
-           \fI(public member function)\fP
+           \fI(public member function)\fP 
    erase   erases elements
-           \fI(public member function)\fP
+           \fI(public member function)\fP 

@@ -1,4 +1,4 @@
-.TH std::basic_istream::gcount 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::basic_istream::gcount 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::basic_istream::gcount \- std::basic_istream::gcount
 
@@ -39,17 +39,17 @@ std::basic_istream::gcount \- std::basic_istream::gcount
 
 .SH Example
 
-
+   
 // Run this code
 
  #include <iostream>
  #include <sstream>
-
+  
  int main()
  {
      char x[20];
      std::istringstream stream("Hello World");
-
+  
      stream.read(x, sizeof x);
      std::cout << "Characters extracted: " << stream.gcount();
  }
@@ -58,7 +58,7 @@ std::basic_istream::gcount \- std::basic_istream::gcount
 
  Characters extracted: 11
 
-  Defect reports
+   Defect reports
 
    The following behavior-changing defect reports were applied retroactively to
    previously published C++ standards.

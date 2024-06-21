@@ -1,4 +1,4 @@
-.TH std::fopen 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::fopen 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::fopen \- std::fopen
 
@@ -14,7 +14,7 @@ std::fopen \- std::fopen
    filename - file name to associate the file stream to
    mode     - null-terminated character string determining file access mode
 
-  File access flags
+   File access flags
 
     File access        Meaning         Explanation      Action if file  Action if file
     mode string                                         already exists  does not exist
@@ -60,33 +60,34 @@ std::fopen \- std::fopen
 
 .SH Example
 
-
+   
 // Run this code
 
  #include <cstdio>
  #include <cstdlib>
-
+  
  int main()
  {
      int is_ok = EXIT_FAILURE;
      FILE* fp = std::fopen("/tmp/test.txt", "w+");
-     if(!fp) {
+     if (!fp)
+     {
          std::perror("File opening failed");
          return is_ok;
      }
-
-     int c; // note: int, not char, required to handle EOF
-     while ((c = std::fgetc(fp)) != EOF) { // standard C I/O file reading loop
-        std::putchar(c);
-     }
-
-     if (std::ferror(fp)) {
+  
+     int c; // Note: int, not char, required to handle EOF
+     while ((c = std::fgetc(fp)) != EOF) // Standard C I/O file reading loop
+         std::putchar(c);
+  
+     if (std::ferror(fp))
          std::puts("I/O error when reading");
-     } else if (std::feof(fp)) {
+     else if (std::feof(fp))
+     {
          std::puts("End of file reached successfully");
          is_ok = EXIT_SUCCESS;
      }
-
+  
      std::fclose(fp);
      return is_ok;
  }
@@ -98,8 +99,10 @@ std::fopen \- std::fopen
 .SH See also
 
    fclose  closes a file
-           \fI(function)\fP
+           \fI(function)\fP 
    fflush  synchronizes an output stream with the actual file
-           \fI(function)\fP
+           \fI(function)\fP 
    freopen open an existing stream with a different name
-           \fI(function)\fP
+           \fI(function)\fP 
+   C documentation for
+   fopen

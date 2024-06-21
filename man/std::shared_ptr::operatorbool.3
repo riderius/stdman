@@ -1,4 +1,4 @@
-.TH std::shared_ptr::operatorbool 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::shared_ptr::operatorbool 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::shared_ptr::operatorbool \- std::shared_ptr::operatorbool
 
@@ -22,26 +22,25 @@ std::shared_ptr::operatorbool \- std::shared_ptr::operatorbool
 
 .SH Example
 
-
+   
 // Run this code
 
  #include <iostream>
  #include <memory>
-
+  
  void report(std::shared_ptr<int> ptr)
  {
-     if (ptr) {
+     if (ptr)
          std::cout << "*ptr=" << *ptr << "\\n";
-     } else {
+     else
          std::cout << "ptr is not a valid pointer.\\n";
-     }
  }
-
+  
  int main()
  {
      std::shared_ptr<int> ptr;
      report(ptr);
-
+  
      ptr = std::make_shared<int>(7);
      report(ptr);
  }
@@ -54,4 +53,4 @@ std::shared_ptr::operatorbool \- std::shared_ptr::operatorbool
 .SH See also
 
    get returns the stored pointer
-       \fI(public member function)\fP
+       \fI(public member function)\fP 

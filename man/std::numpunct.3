@@ -1,4 +1,4 @@
-.TH std::numpunct 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::numpunct 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::numpunct \- std::numpunct
 
@@ -35,50 +35,49 @@ std::numpunct \- std::numpunct
 
                                    Inheritance diagram
 
-   Two standalone (locale-independent) specializations are provided by the standard
-   library:
+.SH Specializations
+
+   The standard library is guaranteed to provide the following specializations (they
+   are required to be implemented by any locale object):
 
    Defined in header <locale>
    std::numpunct<char>    provides equivalents of the "C" locale preferences
    std::numpunct<wchar_t> provides wide character equivalents of the "C" locale
                           preferences
 
-   In addition, every locale object constructed in a C++ program implements its own
-   (locale-specific) versions of these specializations.
-
 .SH Member types
 
    Member type Definition
-   char_type   charT
-   string_type std::basic_string<charT>
+   char_type   CharT
+   string_type std::basic_string<CharT>
 
 .SH Member functions
 
    constructor   constructs a new numpunct facet
-                 \fI(public member function)\fP
+                 \fI(public member function)\fP 
    destructor    destructs a numpunct facet
-                 \fI(protected member function)\fP
+                 \fI(protected member function)\fP 
    decimal_point invokes do_decimal_point
-                 \fI(public member function)\fP
+                 \fI(public member function)\fP 
    thousands_sep invokes do_thousands_sep
-                 \fI(public member function)\fP
+                 \fI(public member function)\fP 
    grouping      invokes do_grouping
-                 \fI(public member function)\fP
+                 \fI(public member function)\fP 
    truename      invokes do_truename or do_falsename
-   falsename     \fI(public member function)\fP
+   falsename     \fI(public member function)\fP 
 
 .SH Protected member functions
 
    do_decimal_point provides the character to use as decimal point
-   \fB[virtual]\fP        \fI(virtual protected member function)\fP
+   \fB[virtual]\fP        \fI(virtual protected member function)\fP 
    do_thousands_sep provides the character to use as thousands separator
-   \fB[virtual]\fP        \fI(virtual protected member function)\fP
+   \fB[virtual]\fP        \fI(virtual protected member function)\fP 
    do_grouping      provides the numbers of digits between each pair of thousands
    \fB[virtual]\fP        separators
-                    \fI(virtual protected member function)\fP
+                    \fI(virtual protected member function)\fP 
    do_truename      provides the string to use as the name of the boolean true and
    do_falsename     false
-   \fB[virtual]\fP        \fI(virtual protected member function)\fP
+   \fB[virtual]\fP        \fI(virtual protected member function)\fP 
 
 .SH Member objects
 
@@ -87,19 +86,20 @@ std::numpunct \- std::numpunct
 
 .SH Example
 
-   The following example changes the string representations of true and false
+   The following example changes the string representations of true and false:
 
-
+   
 // Run this code
 
  #include <iostream>
  #include <locale>
-
- struct french_bool : std::numpunct<char> {
+  
+ struct french_bool : std::numpunct<char>
+ {
      string_type do_truename() const override { return "vrai"; }
      string_type do_falsename() const override { return "faux"; }
  };
-
+  
  int main()
  {
      std::cout << "default locale: "
@@ -113,6 +113,15 @@ std::numpunct \- std::numpunct
 
  default locale: true, false
  locale with modified numpunct: vrai, faux
+
+   Defect reports
+
+   The following behavior-changing defect reports were applied retroactively to
+   previously published C++ standards.
+
+     DR    Applied to           Behavior as published               Correct behavior
+   LWG 338 C++98      the sign token allowed an optional         removed the whitespace
+                      whitespace following + or -
 
 .SH See also
 

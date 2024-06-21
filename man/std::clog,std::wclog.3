@@ -1,4 +1,4 @@
-.TH std::clog,std::wclog 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::clog,std::wclog 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::clog,std::wclog \- std::clog,std::wclog
 
@@ -24,27 +24,30 @@ std::clog,std::wclog \- std::clog,std::wclog
 .SH Notes
 
    The 'c' in the name refers to "character" (stroustrup.com FAQ); clog means
-   "character log" and wclog means "wide character log"
+   "character log" and wclog means "wide character log".
 
 .SH Example
 
-
+   
 // Run this code
 
  #include <iostream>
-
- struct Foo {
+  
+ struct Foo
+ {
      int n;
-     Foo() {
-        std::clog << "static constructor\\n";
+     Foo()
+     {
+         std::clog << "static constructor\\n";
      }
-     ~Foo() {
-        std::clog << "static destructor\\n";
+     ~Foo()
+     {
+         std::clog << "static destructor\\n";
      }
  };
-
+  
  Foo f; // static object
-
+  
  int main()
  {
      std::clog << "main function\\n";
@@ -59,7 +62,7 @@ std::clog,std::wclog \- std::clog,std::wclog
 .SH See also
 
    Init   initializes standard stream objects
-          \fI(public member class of std::ios_base)\fP
+          \fI(public member class of std::ios_base)\fP 
    cerr   writes to the standard C error stream stderr, unbuffered
    wcerr  (global object)
    cout   writes to the standard C output stream stdout
@@ -67,4 +70,4 @@ std::clog,std::wclog \- std::clog,std::wclog
    stdin  expression of type FILE* associated with the input stream
    stdout expression of type FILE* associated with the output stream
    stderr expression of type FILE* associated with the error output stream
-          (macro constant)
+          (macro constant) 

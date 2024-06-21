@@ -1,4 +1,4 @@
-.TH std::match_results::suffix 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::match_results::suffix 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::match_results::suffix \- std::match_results::suffix
 
@@ -21,19 +21,19 @@ std::match_results::suffix \- std::match_results::suffix
 
 .SH Example
 
-
+   
 // Run this code
 
  #include <iostream>
  #include <regex>
  #include <string>
-
+  
  int main()
  {
      std::regex re("a(a)*by");
      std::string target("baaaby123");
      std::smatch sm;
-
+  
      std::regex_search(target, sm, re);
      std::cout << sm.suffix() << '\\n';
  }
@@ -45,5 +45,5 @@ std::match_results::suffix \- std::match_results::suffix
 .SH See also
 
           returns sub-sequence between the beginning of the target sequence and the
-   prefix beginning of the full match.
-          \fI(public member function)\fP
+   prefix beginning of the full match
+          \fI(public member function)\fP 

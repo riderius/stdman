@@ -1,4 +1,4 @@
-.TH std::pair::swap 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::pair::swap 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::pair::swap \- std::pair::swap
 
@@ -32,36 +32,36 @@ std::pair::swap \- std::pair::swap
 
 .SH Exceptions
 
-   noexcept specification:
+   noexcept specification:  
    noexcept(
 
-   noexcept(swap(first, other.first)) &&
-   noexcept(swap(second, other.second))                                   \fI(until C++17)\fP
+        noexcept(swap(first, other.first)) &&
+        noexcept(swap(second, other.second))                              \fI(until C++17)\fP
 
    )
 
    In the expression above, the identifier swap is looked up in the same
    manner as the one used by the C++17 std::is_nothrow_swappable trait.
    1)
-   noexcept specification:
+   noexcept specification:  
    noexcept(
 
-   std::is_nothrow_swappable_v<first_type> &&
-   std::is_nothrow_swappable_v<second_type>
+        std::is_nothrow_swappable_v<first_type> &&
+        std::is_nothrow_swappable_v<second_type>
 
    )                                                                      \fI(since C++17)\fP
    2)
-   noexcept specification:
+   noexcept specification:  
    noexcept(
 
-   std::is_nothrow_swappable_v<const first_type> &&
-   std::is_nothrow_swappable_v<const second_type>
+        std::is_nothrow_swappable_v<const first_type> &&
+        std::is_nothrow_swappable_v<const second_type>
 
    )
 
 .SH Example
 
-
+   
 // Run this code
 
  #include <iostream>
@@ -72,7 +72,7 @@ std::pair::swap \- std::pair::swap
      std::pair<int, std::string> p1(10, "test"), p2;
      p2.swap(p1);
      std::cout << "(" << p2.first << ", " << p2.second << ")\\n";
-
+  
  #if __cpp_lib_ranges_zip >= 202110L
      // Using the C++23 const qualified swap overload
      // (swap is no longer propagating pair constness)
@@ -89,7 +89,7 @@ std::pair::swap \- std::pair::swap
  (10, test)
  (10, test)
 
-  Defect reports
+   Defect reports
 
    The following behavior-changing defect reports were applied retroactively to
    previously published C++ standards.
@@ -99,7 +99,10 @@ std::pair::swap \- std::pair::swap
 
 .SH See also
 
-   swap    swaps the values of two objects
-           \fI(function template)\fP
-   swap    swaps the contents of two tuples
-   \fI(C++11)\fP \fI(public member function of std::tuple<Types...>)\fP
+   swap swaps the values of two objects
+        \fI(function template)\fP 
+   swap swaps the contents of two tuples
+        \fI(public member function of std::tuple<Types...>)\fP 
+
+.SH Category:
+     * conditionally noexcept

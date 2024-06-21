@@ -1,4 +1,4 @@
-.TH std::ends 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::ends 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::ends \- std::ends
 
@@ -26,15 +26,16 @@ std::ends \- std::ends
 
 .SH Return value
 
-   os (reference to the stream after insertion of the null character)
+   os (reference to the stream after insertion of the null character).
 
 .SH Example
 
-
+   
 // Run this code
 
  #include <cstdio>
  #include <strstream>
+  
  int main()
  {
      std::ostrstream oss;
@@ -50,4 +51,5 @@ std::ends \- std::ends
 .SH See also
 
    ostrstream            implements character array output operations
-   (deprecated in C++98) \fI(class)\fP
+   (deprecated in C++98) \fI(class)\fP 
+   (removed in C++26)

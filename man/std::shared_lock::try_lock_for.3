@@ -1,4 +1,4 @@
-.TH std::shared_lock::try_lock_for 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::shared_lock::try_lock_for 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::shared_lock::try_lock_for \- std::shared_lock::try_lock_for
 
@@ -35,13 +35,11 @@ std::shared_lock::try_lock_for \- std::shared_lock::try_lock_for
 
 .SH Exceptions
 
-     * Any exceptions thrown by mutex()->try_lock_shared_for(timeout_duration)
-
+     * Any exceptions thrown by mutex()->try_lock_shared_for(timeout_duration).
      * If there is no associated mutex, std::system_error with an error code of
-       std::errc::operation_not_permitted
-
+       std::errc::operation_not_permitted.
      * If the mutex is already locked, std::system_error with an error code of
-       std::errc::resource_deadlock_would_occur
+       std::errc::resource_deadlock_would_occur.
 
 .SH Example
 
@@ -53,12 +51,15 @@ std::shared_lock::try_lock_for \- std::shared_lock::try_lock_for
                   attempts to lock (i.e., takes ownership of) the associated
    try_lock_for   TimedLockable mutex, returns if the mutex has been unavailable for
                   the specified time duration
-                  \fI(public member function of std::unique_lock<Mutex>)\fP
+                  \fI(public member function of std::unique_lock<Mutex>)\fP 
    lock           locks the associated mutex
-                  \fI(public member function)\fP
+                  \fI(public member function)\fP 
    try_lock       tries to lock the associated mutex
-                  \fI(public member function)\fP
+                  \fI(public member function)\fP 
    try_lock_until tries to lock the associated mutex, until a specified time point
-                  \fI(public member function)\fP
+                  \fI(public member function)\fP 
    unlock         unlocks the associated mutex
-                  \fI(public member function)\fP
+                  \fI(public member function)\fP 
+
+.SH Category:
+     * Todo no example

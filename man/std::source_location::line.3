@@ -1,4 +1,4 @@
-.TH std::source_location::line 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::source_location::line 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::source_location::line \- std::source_location::line
 
@@ -19,13 +19,13 @@ std::source_location::line \- std::source_location::line
 
 .SH Example
 
-
+   
 // Run this code
 
  #include <iostream>
  #include <string_view>
  #include <source_location>
-
+  
  inline void cur_line(
      const std::string_view message = "",
      const std::source_location& location = std::source_location::current())
@@ -35,7 +35,7 @@ std::source_location::line \- std::source_location::line
          << ") "
          << message;
  }
-
+  
  int main()
  {
      cur_line("++\\n");
@@ -54,12 +54,12 @@ std::source_location::line \- std::source_location::line
 .SH See also
 
    column        return the column number represented by this object
-                 \fI(public member function)\fP
+                 \fI(public member function)\fP 
    file_name     return the file name represented by this object
-                 \fI(public member function)\fP
+                 \fI(public member function)\fP 
    function_name return the name of the function represented by this object, if any
-                 \fI(public member function)\fP
+                 \fI(public member function)\fP 
    source_line   gets the line number that lexically relates the evaluation represented
    (C++23)       by the stacktrace_entry
-                 \fI(public member function of std::stacktrace_entry)\fP
+                 \fI(public member function of std::stacktrace_entry)\fP 
    Filename and line information

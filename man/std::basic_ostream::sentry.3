@@ -1,4 +1,4 @@
-.TH std::basic_ostream::sentry 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::basic_ostream::sentry 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::basic_ostream::sentry \- std::basic_ostream::sentry
 
@@ -17,18 +17,18 @@ std::basic_ostream::sentry \- std::basic_ostream::sentry
 .SH Member functions
 
    constructor   constructs the sentry object. All the preparation tasks are done here
-                 \fI(public member function)\fP
+                 \fI(public member function)\fP 
                  finalizes the stream object after formatted output or after exception,
    destructor    if necessary
                  \fI(public member function)\fP
    operator=     the assignment operator is deleted
                  \fI(public member function)\fP
    operator bool checks if the preparation of the stream object was successful
-                 \fI(public member function)\fP
+                 \fI(public member function)\fP 
 
 std::basic_ostream::sentry::sentry
 
-   explicit sentry( std::basic_ostream<CharT,Traits>& os );
+   explicit sentry( std::basic_ostream<CharT, Traits>& os );
 
    Prepares the stream for formatted output.
 
@@ -72,29 +72,28 @@ std::basic_ostream::sentry::operator bool
 
 .SH Example
 
-
+   
 // Run this code
 
  #include <iostream>
  #include <sstream>
-
+  
  struct Foo
  {
      char n[6];
  };
-
+  
  std::ostream& operator<<(std::ostream& os, Foo& f)
  {
      std::ostream::sentry s(os);
-     if (s) {
+     if (s)
          os.write(f.n, 5);
-     }
      return os;
  }
-
+  
  int main()
  {
-     Foo f = { "abcde" };
+     Foo f = {"abcde"};
      std::cout << f << '\\n';
  }
 
@@ -102,7 +101,24 @@ std::basic_ostream::sentry::operator bool
 
  abcde
 
+   Defect reports
+
+   The following behavior-changing defect reports were applied retroactively to
+   previously published C++ standards.
+
+     DR    Applied to            Behavior as published              Correct behavior
+   LWG 397 C++98      the destructor might call os.flush(), which the exception is not
+                      may throw exceptions                        propagated
+   LWG 442 C++98      operator bool was not declared const (it is added const
+                      const in the synopsis)
+                      if os sets unitbuf, the destructor would
+                      call os.flush(), which                      calls
+   LWG 835 C++98      is an UnformattedOutputFunction and creates os.rdbuf()->pubsync()
+                      another sentry object                       in this case instead
+                      (whose destructor then creates another
+                      sentry object and so on)
+
 .SH See also
 
    operator<< inserts formatted data
-              \fI(public member function)\fP
+              \fI(public member function)\fP 

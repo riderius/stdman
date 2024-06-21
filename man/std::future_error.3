@@ -1,4 +1,4 @@
-.TH std::future_error 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::future_error 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::future_error \- std::future_error
 
@@ -18,13 +18,13 @@ std::future_error \- std::future_error
 .SH Member functions
 
    constructor   creates a std::future_error object
-                 \fI(public member function)\fP
+                 \fI(public member function)\fP 
    operator=     replaces the std::future_error object
-                 \fI(public member function)\fP
+                 \fI(public member function)\fP 
    code          returns the error code
-                 \fI(public member function)\fP
+                 \fI(public member function)\fP 
    what          returns the explanatory string specific to the error code
-                 \fI(public member function)\fP
+                 \fI(public member function)\fP 
 
 Inherited from std::logic_error
 
@@ -33,25 +33,28 @@ Inherited from std::exception
 .SH Member functions
 
    destructor   destroys the exception object
-   \fB[virtual]\fP    \fI(virtual public member function of std::exception)\fP
+   \fB[virtual]\fP    \fI(virtual public member function of std::exception)\fP 
    what         returns an explanatory string
-   \fB[virtual]\fP    \fI(virtual public member function of std::exception)\fP
+   \fB[virtual]\fP    \fI(virtual public member function of std::exception)\fP 
 
 .SH Example
 
-
+   
 // Run this code
 
  #include <future>
  #include <iostream>
-
+  
  int main()
  {
      std::future<int> empty;
-     try {
+     try
+     {
          int n = empty.get(); // The behavior is undefined, but
                               // some implementations throw std::future_error
-     } catch (const std::future_error& e) {
+     }
+     catch (const std::future_error& e)
+     {
          std::cout << "Caught a future_error with code \\"" << e.code()
                    << "\\"\\nMessage: \\"" << e.what() << "\\"\\n";
      }
@@ -65,4 +68,4 @@ Inherited from std::exception
 .SH See also
 
    future_errc identifies the future error codes
-   \fI(C++11)\fP     \fI(enum)\fP
+   \fI(C++11)\fP     \fI(enum)\fP 

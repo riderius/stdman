@@ -1,4 +1,4 @@
-.TH std::bad_function_call 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::bad_function_call 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::bad_function_call \- std::bad_function_call
 
@@ -81,24 +81,27 @@ Inherited from std::exception
 .SH Member functions
 
    destructor   destroys the exception object
-   \fB[virtual]\fP    \fI(virtual public member function of std::exception)\fP
+   \fB[virtual]\fP    \fI(virtual public member function of std::exception)\fP 
    what         returns an explanatory string
-   \fB[virtual]\fP    \fI(virtual public member function of std::exception)\fP
+   \fB[virtual]\fP    \fI(virtual public member function of std::exception)\fP 
 
 .SH Example
 
-
+   
 // Run this code
 
- #include <iostream>
  #include <functional>
-
+ #include <iostream>
+  
  int main()
  {
      std::function<int()> f = nullptr;
-     try {
+     try
+     {
          f();
-     } catch(const std::bad_function_call& e) {
+     }
+     catch (const std::bad_function_call& e)
+     {
          std::cout << e.what() << '\\n';
      }
  }
@@ -111,4 +114,4 @@ Inherited from std::exception
 
    function wraps callable object of any copy constructible type with specified
    \fI(C++11)\fP  function call signature
-            \fI(class template)\fP
+            \fI(class template)\fP 

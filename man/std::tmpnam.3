@@ -1,4 +1,4 @@
-.TH std::tmpnam 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::tmpnam 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::tmpnam \- std::tmpnam
 
@@ -17,7 +17,7 @@ std::tmpnam \- std::tmpnam
 
               pointer to the character array capable of holding at least L_tmpnam
    filename - bytes, to be used as a result buffer. If a null pointer is passed, a
-              pointer to an internal static buffer is returned.
+              pointer to an internal static buffer is returned
 
 .SH Return value
 
@@ -39,22 +39,21 @@ std::tmpnam \- std::tmpnam
 
 .SH Example
 
-
+   
 // Run this code
 
- #include <iostream>
  #include <cstdio>
+ #include <iostream>
  #include <string>
-
+  
  int main()
  {
      std::string name1 = std::tmpnam(nullptr);
      std::cout << "temporary file name: " << name1 << '\\n';
-
+  
      char name2[L_tmpnam];
-     if (std::tmpnam(name2)) {
+     if (std::tmpnam(name2))
          std::cout << "temporary file name: " << name2 << '\\n';
-     }
  }
 
 .SH Possible output:
@@ -65,6 +64,8 @@ std::tmpnam \- std::tmpnam
 .SH See also
 
    tmpfile             creates and opens a temporary, auto-removing file
-                       \fI(function)\fP
+                       \fI(function)\fP 
    temp_directory_path returns a directory suitable for temporary files
-   \fI(C++17)\fP             \fI(function)\fP
+   \fI(C++17)\fP             \fI(function)\fP 
+   C documentation for
+   tmpnam

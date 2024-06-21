@@ -1,10 +1,10 @@
-.TH std::is_pointer_interconvertible_with_class 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::is_pointer_interconvertible_with_class 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::is_pointer_interconvertible_with_class \- std::is_pointer_interconvertible_with_class
 
 .SH Synopsis
    Defined in header <type_traits>
-   template<class S, class M>
+   template< class S, class M >
    constexpr bool is_pointer_interconvertible_with_class( M S::* mp )     \fI(since C++20)\fP
    noexcept;
 
@@ -38,38 +38,32 @@ std::is_pointer_interconvertible_with_class \- std::is_pointer_interconvertible_
    On common platforms, the bit pattern of mp is all zero if
    std::is_pointer_interconvertible_with_class(mp) == true.
 
-   Feature-test macro: __cpp_lib_is_pointer_interconvertible
+         Feature-test macro            Value    Std                       Feature
+                                                      Pointer-interconvertibility traits:
+__cpp_lib_is_pointer_interconvertible 201907L (C++20)   * std::is_pointer_interconvertible_base_of,
+                                                        * std::is_pointer_interconvertible_with_class
 
 .SH Example
 
-
+   
 // Run this code
 
  #include <type_traits>
- #include <iostream>
-
+  
  struct Foo { int x; };
  struct Bar { int y; };
-
+  
  struct Baz : Foo, Bar {}; // not standard-layout
-
- int main()
- {
-     std::cout << std::boolalpha
-         << std::is_same_v<decltype(&Baz::x), int Baz::*> << '\\n'
-         << std::is_pointer_interconvertible_with_class(&Baz::x) << '\\n'
-         << std::is_pointer_interconvertible_with_class<Baz, int>(&Baz::x) << '\\n';
- }
-
-.SH Output:
-
- false
- true
- false
+  
+ static_assert( not std::is_same_v<decltype(&Baz::x), int Baz::*> );
+ static_assert( std::is_pointer_interconvertible_with_class(&Baz::x) );
+ static_assert( not std::is_pointer_interconvertible_with_class<Baz, int>(&Baz::x) );
+  
+ int main() { }
 
 .SH See also
 
    is_standard_layout       checks if a type is a standard-layout type
-   \fI(C++11)\fP                  \fI(class template)\fP
+   \fI(C++11)\fP                  \fI(class template)\fP 
    is_member_object_pointer checks if a type is a pointer to a non-static member object
-   \fI(C++11)\fP                  \fI(class template)\fP
+   \fI(C++11)\fP                  \fI(class template)\fP 

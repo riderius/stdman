@@ -1,4 +1,4 @@
-.TH std::basic_istream::putback 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::basic_istream::putback 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::basic_istream::putback \- std::basic_istream::putback
 
@@ -28,6 +28,7 @@ std::basic_istream::putback \- std::basic_istream::putback
 
 .SH Exceptions
 
+   
    failure if an error occurred (the error state flag is not goodbit) and exceptions()
    is set to throw for that state.
 
@@ -36,14 +37,14 @@ std::basic_istream::putback \- std::basic_istream::putback
 
 .SH Example
 
-   demonstrates the difference between modifying and non-modifying putback()
+   Demonstrates the difference between modifying and non-modifying putback().
 
-
+   
 // Run this code
 
- #include <sstream>
  #include <iostream>
-
+ #include <sstream>
+  
  int main()
  {
      std::stringstream s1("Hello, world"); // IO stream
@@ -52,9 +53,9 @@ std::basic_istream::putback \- std::basic_istream::putback
          std::cout << s1.rdbuf() << '\\n';
      else
          std::cout << "putback failed\\n";
-
+  
      std::cout << "--\\n";
-
+  
      std::istringstream s2("Hello, world"); // input-only stream
      s2.get();
      if (s2.putback('Y')) // cannot modify input-only buffer
@@ -62,9 +63,9 @@ std::basic_istream::putback \- std::basic_istream::putback
      else
          std::cout << "putback failed\\n";
      s2.clear();
-
+  
      std::cout << "--\\n";
-
+  
      if (s2.putback('H')) // non-modifying putback
          std::cout << s2.rdbuf() << '\\n';
      else
@@ -82,8 +83,8 @@ std::basic_istream::putback \- std::basic_istream::putback
 .SH See also
 
    sputbackc puts one character back in the input sequence
-             \fI(public member function of std::basic_streambuf<CharT,Traits>)\fP
+             \fI(public member function of std::basic_streambuf<CharT,Traits>)\fP 
    unget     unextracts a character
-             \fI(public member function)\fP
+             \fI(public member function)\fP 
    peek      reads the next character without extracting it
-             \fI(public member function)\fP
+             \fI(public member function)\fP 

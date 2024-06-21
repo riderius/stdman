@@ -1,13 +1,11 @@
-.TH std::set::end,std::set::cend 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::set::end,std::set::cend 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::set::end,std::set::cend \- std::set::end,std::set::cend
 
 .SH Synopsis
-   iterator end();                        \fI(until C++11)\fP
-   iterator end() noexcept;               \fI(since C++11)\fP
-   const_iterator end() const;            \fI(until C++11)\fP
-   const_iterator end() const noexcept;   \fI(since C++11)\fP
-   const_iterator cend() const noexcept;  \fI(since C++11)\fP
+   iterator end();                       \fB(1)\fP (noexcept since C++11)
+   const_iterator end() const;           \fB(2)\fP (noexcept since C++11)
+   const_iterator cend() const noexcept; \fB(3)\fP \fI(since C++11)\fP
 
    Returns an iterator to the element following the last element of the set.
 
@@ -34,21 +32,25 @@ std::set::end,std::set::cend \- std::set::end,std::set::cend
    the same type), it is not possible to mutate the elements of the container through
    an iterator returned by any of these member functions.
 
+   libc++ backports cend() to C++98 mode.
+
 .SH Example
 
-
+   
 // Run this code
 
  #include <algorithm>
  #include <iostream>
  #include <set>
-
- int main() {
-   std::set<int> set = { 3, 1, 4, 1, 5, 9, 2, 6, 5 };
-   std::for_each(set.cbegin(), set.cend(), [](int x) {
-     std::cout << x << ' ';
-   });
-   std::cout << '\\n';
+  
+ int main()
+ {
+     std::set<int> set{3, 1, 4, 1, 5, 9, 2, 6, 5};
+     std::for_each(set.cbegin(), set.cend(), [](int x)
+     {
+         std::cout << x << ' ';
+     });
+     std::cout << '\\n';
  }
 
 .SH Output:
@@ -58,9 +60,9 @@ std::set::end,std::set::cend \- std::set::end,std::set::cend
 .SH See also
 
    begin   returns an iterator to the beginning
-   cbegin  \fI(public member function)\fP
+   cbegin  \fI(public member function)\fP 
    \fI(C++11)\fP
    end
    cend    returns an iterator to the end of a container or array
-   \fI(C++11)\fP \fI(function template)\fP
+   \fI(C++11)\fP \fI(function template)\fP 
    \fI(C++14)\fP

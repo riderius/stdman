@@ -1,4 +1,4 @@
-.TH std::chrono::leap_second 3 "2022.07.31" "http://cppreference.com" "C++ Standard Libary"
+.TH std::chrono::leap_second 3 "2024.06.10" "http://cppreference.com" "C++ Standard Libary"
 .SH NAME
 std::chrono::leap_second \- std::chrono::leap_second
 
@@ -18,14 +18,19 @@ std::chrono::leap_second \- std::chrono::leap_second
 .SH Member functions
 
    date obtains the time of leap second insertion
-        \fI(public member function)\fP
+        \fI(public member function)\fP 
 
-  Nonmember functions
+   Nonmember functions
 
    operator==
    operator<
    operator<=  compares two leap_second values or a leap_second value and a sys_time
-   operator>   \fI(function template)\fP
+   operator>   \fI(function template)\fP 
    operator>=
    operator<=>
    (C++20)
+
+.SH Helper classes
+
+   std::hash<std::chrono::leap_second> hash support for std::chrono::leap_second
+   (C++26)                             \fI(class template specialization)\fP
